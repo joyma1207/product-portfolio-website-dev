@@ -10,6 +10,7 @@ type Props = {
   onViewChange: (v: View) => void;
 };
 
+/** Work/About toggle — text only (icons not displayed). */
 const WORK_ABOUT_ITEMS = [
   { name: "Work", icon: Briefcase },
   { name: "About", icon: User },

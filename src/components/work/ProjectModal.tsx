@@ -63,7 +63,7 @@ export function ProjectModal({ project, onClose }: Props) {
           />
 
           <div
-            className="absolute inset-0 flex min-h-full items-center justify-center overflow-y-auto p-1 sm:p-2"
+            className="absolute inset-0 flex min-h-full items-center justify-center overflow-y-auto p-0 sm:p-2"
             onClick={onClose}
             role="presentation"
           >
@@ -71,7 +71,7 @@ export function ProjectModal({ project, onClose }: Props) {
               role="dialog"
               aria-modal="true"
               aria-labelledby={titleId}
-              className="relative flex w-[min(98vw,calc(98vh*4/3))] max-h-[98vh] flex-col overflow-hidden rounded-[30px] aspect-[4/3]"
+              className="relative flex h-[100dvh] min-h-0 w-full flex-col overflow-hidden rounded-none sm:h-auto sm:max-h-[98vh] sm:w-[min(98vw,calc(98vh*4/3))] sm:aspect-[4/3] sm:rounded-[30px]"
               initial={reduceMotion ? false : { y: 16, scale: 0.98, opacity: 0 }}
               animate={{ y: 0, scale: 1, opacity: 1 }}
               exit={reduceMotion ? { opacity: 0 } : { y: 12, scale: 0.99, opacity: 0 }}
@@ -85,7 +85,7 @@ export function ProjectModal({ project, onClose }: Props) {
                 borderWidth={2}
                 duration={14}
                 color={MODAL_SHINE_COLORS}
-                className="flex h-full min-h-0 w-full flex-col overflow-hidden rounded-[30px] bg-white p-0 shadow-lg"
+                className="flex h-full min-h-0 w-full flex-col overflow-y-auto overflow-x-hidden rounded-none bg-white p-0 shadow-lg sm:rounded-[30px]"
               >
                 {/* Header: company logo, company name below — left aligned (no divider below) */}
                 <div className="flex flex-shrink-0 w-full items-start justify-between gap-4 px-6 pt-5 pb-2 sm:px-8 sm:pt-6 sm:pb-3">
@@ -180,8 +180,8 @@ export function ProjectModal({ project, onClose }: Props) {
                 {/* Full-width divider between Demo/Clients and Problem/Solution/Impact */}
                 <div className="w-full border-b border-gray-200/70" aria-hidden />
 
-                {/* Problem, Solution, Impact — three columns aligned with Role/Timeline/Team */}
-                <div className="min-h-0 flex-1 overflow-y-auto px-6 py-4 lg:px-8 lg:py-5">
+                {/* Problem, Solution, Impact — three columns aligned with Role/Timeline/Team (scrolls with rest of card) */}
+                <div className="min-h-0 flex-1 px-6 py-4 lg:px-8 lg:py-5">
                   <div className="grid w-full grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-6">
                     <section className="min-w-0 text-left">
                       <h3 className="text-sm font-semibold text-gray-900 tracking-brand">

@@ -20,8 +20,8 @@ export function AboutSection() {
   return (
     <section className="mx-auto max-w-6xl px-6 pb-12 pt-[var(--hero-title-tagline-gap)]" aria-label="About">
       <div className="flex flex-col gap-10 lg:flex-row lg:gap-16">
-        {/* Left: vertical menu */}
-        <aside className="flex-shrink-0 lg:pt-2">
+        {/* Left: vertical menu — hidden on mobile, visible from lg */}
+        <aside className="hidden flex-shrink-0 lg:block lg:pt-2">
           <MenuVertical menuItems={ABOUT_MENU_ITEMS} />
         </aside>
 

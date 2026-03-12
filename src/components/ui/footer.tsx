@@ -80,7 +80,7 @@ export const Footer = React.forwardRef<HTMLDivElement, FooterProps>(
               </p>
             </div>
 
-            <div className="mt-16 flex flex-wrap justify-end gap-x-12 gap-y-8 lg:col-span-8 lg:mt-0">
+            <div className="mt-16 flex flex-wrap justify-start gap-x-12 gap-y-8 lg:col-span-8 lg:mt-0 lg:justify-end">
               {columns.map(({ title, titleHref, links }) => (
                 <div key={title}>
                   {titleHref ? (
@@ -120,7 +120,7 @@ export const Footer = React.forwardRef<HTMLDivElement, FooterProps>(
           </div>
 
           {copyright && (
-            <div className="mt-20 border-t pt-6 pb-8">
+            <div className="mt-20 border-t pt-6 pb-8 text-left">
               <p className="text-xs text-foreground/55">{copyright}</p>
             </div>
           )}

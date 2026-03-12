@@ -43,15 +43,11 @@ export function NavBar({
     >
       <div className="inline-flex items-center gap-2 bg-background/95 border border-border backdrop-blur-lg py-1 px-1 rounded-full shadow-md">
         {items.map((item) => {
-          const Icon = item.icon;
           const isActive = activeTab === item.name;
 
           const content = (
             <>
-              <span className="hidden md:inline tracking-brand">{item.name}</span>
-              <span className="md:hidden">
-                <Icon size={18} strokeWidth={2.5} />
-              </span>
+              <span className="tracking-brand">{item.name}</span>
               {isActive && (
                 <motion.div
                   layoutId="lamp"
