@@ -34,7 +34,7 @@ interface FooterProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export const Footer = React.forwardRef<HTMLDivElement, FooterProps>(
-  ({ className, brand, socialLinks, columns, copyright, onBrandClick, ...props }, ref) => {
+  ({ className, brand, socialLinks, columns, copyright, onBrandClick, onColumnTitleClick, ...props }, ref) => {
     return (
       <div
         ref={ref}
