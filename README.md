@@ -36,3 +36,4 @@ Open [http://localhost:3000](http://localhost:3000).
 ## If things get inconsistent
 
 If the assistant starts contradicting the PRD or making things up, **start a new chat** and say: “Continue my Joy Ma portfolio from the PRD; current state: [paste this README or list what’s done].” That resets context and reduces hallucinations.
+# product-portfolio-website-dev
