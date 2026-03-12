@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #FAFAFA;
+  --foreground: #171717;
+  --muted: #737373;
+  --accent-yellow: #FEF3C7;
+  --accent-orange: #FFEDD5;
+  --accent-lavender: #E9D5FF;
+  --accent-blue: #DBEAFE;
+
+  /* Shared nav/toggle + about menu (adjust once, both update) */
+  --nav-menu-indent: 1.75rem; /* left align with Work/About first letter */
+  /* Joy Ma ↔ tagline; about menu items; gap below Work/About divider (adjust once, all update) */
+  --hero-title-tagline-gap: 1rem;
+
+  /* Hero + footer content alignment (adjust once, both line up) */
+  --content-max-width: 72rem; /* max-w-6xl */
+  --content-padding-x: 1.5rem; /* px-6 */
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* Letter-spacing for Joy Ma, Work/About buttons, About dropdown (PRD) */
+.tracking-brand {
+  letter-spacing: 0.02em;
+}
