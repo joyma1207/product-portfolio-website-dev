@@ -2,6 +2,7 @@
 
 import type { Project } from "@/data/projects";
 import { ShineBorder } from "@/components/ui/shine-border";
+import { StorytellerGrid } from "@/components/work/StorytellerGrid";
 
 /** Pastel shine colors per PRD (lavender, soft orange, baby blue) */
 const CARD_SHINE_COLORS = ["#E9D5FF", "#FFEDD5", "#DBEAFE"];
@@ -14,9 +15,28 @@ type Props = {
   onOpen: () => void;
 };
 
+/** Project ID that uses the 5-image staggered Storyteller grid on the card. */
+const STORYTELLER_GRID_ID = "storyteller" as const;
+
+/** Project IDs that use the three-images layout on the grid card. */
+const THREE_IMAGES_LAYOUT_IDS = [] as const;
+
 export function ProjectCard({ project, onOpen }: Props) {
   const imageMedia =
     project.media?.filter((m) => m.type === "image") ?? [];
+  const isStorytellerGrid =
+    project.id === STORYTELLER_GRID_ID &&
+    imageMedia.length >= 5;
+  const showThreeImagesLayout =
+    imageMedia.length > 0 &&
+    !isStorytellerGrid &&
+    THREE_IMAGES_LAYOUT_IDS.includes(project.id as (typeof THREE_IMAGES_LAYOUT_IDS)[number]);
+  const cardImages = project.cardImage
+    ? Array.isArray(project.cardImage)
+      ? project.cardImage
+      : [project.cardImage]
+    : [];
+  const showCardImage = cardImages.length > 0 && !isStorytellerGrid;
 
   return (
     <ShineBorder
@@ -31,8 +51,135 @@ export function ProjectCard({ project, onOpen }: Props) {
         onClick={onOpen}
         className="group relative z-10 flex h-full w-full flex-col text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900/20 rounded-[30px] min-h-0"
       >
-        {/* Image area: height-based so aspect ratio is kept and text is never overlapped; same px-6 as text */}
-        {imageMedia.length > 0 && (
+        {/* Storyteller: 5 phones side-by-side, up-down staggered, Figma shadow */}
+        {isStorytellerGrid && (
+          <div className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden px-6 pt-6 pb-7">
+            <div className="flex h-full min-h-0 items-end justify-center">
+              <StorytellerGrid
+                imageUrls={[
+                  imageMedia[0].url,
+                  imageMedia[1].url,
+                  imageMedia[2].url,
+                  imageMedia[3].url,
+                  imageMedia[4].url,
+                ]}
+              />
+            </div>
+          </div>
+        )}
+
+        {/* Card-only image(s): single full-size, side-by-side, or stagger-overlap; not used in demo. */}
+        {showCardImage && (
+          <div className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden p-4">
+            <div
+              className={`relative h-full min-h-0 w-full overflow-hidden rounded-lg flex bg-white ${
+                project.cardImageLayout === "stagger-overlap" && cardImages.length === 2
+                  ? ""
+                  : cardImages.length > 1
+                    ? "gap-2"
+                    : ""
+              }`}
+            >
+              {project.cardImageLayout === "stagger-overlap" && cardImages.length >= 2 ? (
+                <>
+                  {/* Back (left, vertically centered) — corporate responsibility & ethics */}
+                  <div className="absolute left-3 top-1/2 -translate-y-1/2 w-[52%] h-[52%] z-0 rounded-lg overflow-hidden shadow-md">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={cardImages[0]}
+                      alt=""
+                      className="h-full w-full object-cover object-top"
+                      aria-hidden
+                    />
+                  </div>
+                  {/* Middle (top-right) — only when 3 images */}
+                  {cardImages.length >= 3 && (
+                    <div className="absolute right-2 top-3 w-[52%] h-[52%] z-10 rounded-lg overflow-hidden shadow-lg">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={cardImages[1]}
+                        alt=""
+                        className="h-full w-full object-cover object-center"
+                        aria-hidden
+                      />
+                    </div>
+                  )}
+                  {/* Front: 2 images = top-right; 3 images = bottom-right */}
+                  <div
+                    className={`absolute w-[52%] h-[52%] z-20 rounded-lg overflow-hidden shadow-lg ${
+                      cardImages.length >= 3 ? "right-3 bottom-0" : "right-0 top-3"
+                    }`}
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={cardImages[cardImages.length >= 3 ? 2 : 1]}
+                      alt=""
+                      className="h-full w-full object-cover object-top"
+                      aria-hidden
+                    />
+                  </div>
+                </>
+              ) : project.id === "adobe-ivey" && cardImages.length >= 2 ? (
+                <>
+                  {/* Adobe: Conference Overview (left) — unchanged */}
+                  <div className="min-w-0 flex-1 flex items-center justify-start shrink-0">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={cardImages[0]}
+                      alt=""
+                      className="h-full w-full max-h-full object-contain object-left"
+                      aria-hidden
+                    />
+                  </div>
+                  {/* Adobe: filler pattern (middle) — fills spacing, no overlap */}
+                  {cardImages.length >= 3 && (
+                    <div className="min-w-0 w-50 flex-shrink-0 flex items-stretch overflow-hidden">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={cardImages[1]}
+                        alt=""
+                        className="h-full w-full object-cover object-center"
+                        aria-hidden
+                      />
+                    </div>
+                  )}
+                  {/* Adobe: Adobe Solutions (right) — unchanged */}
+                  <div className="min-w-0 flex-1 flex items-center justify-end shrink-0">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={cardImages[cardImages.length >= 3 ? 2 : 1]}
+                      alt=""
+                      className="h-full w-full max-h-full object-contain object-right"
+                      aria-hidden
+                    />
+                  </div>
+                </>
+              ) : (
+                cardImages.map((src, i) => (
+                  <div
+                    key={`${src}-${i}`}
+                    className={`${cardImages.length > 1 ? "min-w-0 flex-1" : "h-full w-full"} ${project.id === "adobe-ivey" && cardImages.length === 1 ? "flex items-center justify-center" : ""}`}
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={src}
+                      alt=""
+                      className={
+                        project.id === "adobe-ivey" && cardImages.length === 1
+                          ? "h-full w-full max-h-full max-w-full object-contain object-center"
+                          : "h-full w-full object-cover object-top"
+                      }
+                      aria-hidden
+                    />
+                  </div>
+                ))
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* Image area: three-images layout for united-way etc. */}
+        {showThreeImagesLayout && (
           <div className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden px-6 pt-6 pb-2">
             <div className="flex h-full items-center justify-center gap-8">
               {imageMedia.slice(0, 3).map((m, i) => (
@@ -54,9 +201,14 @@ export function ProjectCard({ project, onOpen }: Props) {
           </div>
         )}
 
-        {/* Company + tagline: same px-6 so image and text align left/right; bottom-aligned when no images */}
+        {/* Spacer: when no image layout, pushes company/tagline to bottom of card */}
+        {!isStorytellerGrid && !showThreeImagesLayout && !showCardImage && (
+          <div className="min-h-0 flex-1" aria-hidden />
+        )}
+
+        {/* Company + tagline: same px-6 so image and text align left/right; always at bottom */}
         <div
-          className={`min-w-0 px-6 pb-6 ${imageMedia.length > 0 ? "flex-shrink-0 pt-1" : "flex flex-1 flex-col justify-end pt-6"}`}
+          className={`min-w-0 flex-shrink-0 px-6 pb-6 ${isStorytellerGrid || showThreeImagesLayout || showCardImage ? "pt-1" : "pt-6"}`}
         >
           <h3 className="text-lg font-bold text-gray-900 tracking-brand">
             {project.company}

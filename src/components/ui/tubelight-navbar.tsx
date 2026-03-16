@@ -8,7 +8,6 @@ import { cn } from "@/lib/utils";
 export interface NavItem {
   name: string;
   url?: string;
-  icon: LucideIcon;
 }
 
 interface NavBarProps {
@@ -35,23 +34,24 @@ export function NavBar({
   return (
     <div
       className={cn(
+        "relative",
         inline
-          ? "relative left-0 translate-x-0"
+          ? "left-0 translate-x-0"
           : "fixed bottom-0 sm:top-0 left-1/2 -translate-x-1/2 z-50 mb-6 sm:pt-6",
         className,
       )}
     >
-      <div className="inline-flex items-center gap-2 bg-background/95 border border-border backdrop-blur-lg py-1 px-1 rounded-full shadow-md">
+      <div className="inline-flex items-center gap-2 bg-background/95 border border-border backdrop-blur-lg py-1 px-1 rounded-full shadow-md pointer-events-auto">
         {items.map((item) => {
           const isActive = activeTab === item.name;
 
           const content = (
             <>
-              <span className="tracking-brand">{item.name}</span>
+              <span className="relative z-10 tracking-brand">{item.name}</span>
               {isActive && (
                 <motion.div
                   layoutId="lamp"
-                  className="absolute inset-0 w-full bg-primary/10 rounded-full -z-10"
+                  className="pointer-events-none absolute inset-0 w-full bg-primary/10 rounded-full -z-10"
                   initial={false}
                   transition={{
                     type: "spring",
@@ -74,9 +74,12 @@ export function NavBar({
               <button
                 key={item.name}
                 type="button"
-                onClick={() => onTabChange(item.name)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  onTabChange(item.name);
+                }}
                 className={cn(
-                  "relative cursor-pointer text-sm font-semibold px-6 py-2 rounded-full transition-colors",
+                  "relative z-0 cursor-pointer text-sm font-semibold px-6 py-2 rounded-full transition-colors",
                   "text-foreground/80 hover:text-primary",
                   isActive && "bg-muted text-primary",
                 )}

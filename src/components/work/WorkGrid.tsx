@@ -17,21 +17,34 @@ export function WorkGrid({ projects, onOpenProject }: Props) {
   const reduceMotion = useReducedMotion();
 
   return (
-    <div className="grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2">
+    <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6">
       {Array.from({ length: GRID_SIZE }, (_, i) => {
         const project = projects[i];
         if (project) {
           return (
-            <motion.div
+            <div
               key={project.id}
-              initial={false}
-              whileHover={reduceMotion ? undefined : { y: -2 }}
-              transition={
-                reduceMotion ? { duration: 0 } : { type: "spring", stiffness: 400, damping: 30 }
-              }
+              role="button"
+              tabIndex={0}
+              onClick={() => onOpenProject(project.id)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  onOpenProject(project.id);
+                }
+              }}
+              className="cursor-pointer"
             >
-              <ProjectCard project={project} onOpen={() => onOpenProject(project.id)} />
-            </motion.div>
+              <motion.div
+                initial={false}
+                whileHover={reduceMotion ? undefined : { y: -2 }}
+                transition={
+                  reduceMotion ? { duration: 0 } : { type: "spring", stiffness: 400, damping: 30 }
+                }
+              >
+                <ProjectCard project={project} />
+              </motion.div>
+            </div>
           );
         }
         return (

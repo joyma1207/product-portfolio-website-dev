@@ -10,10 +10,10 @@ type Props = {
   onViewChange: (v: View) => void;
 };
 
-/** Work/About toggle — text only (icons not displayed). */
+/** Work/About toggle —  */
 const WORK_ABOUT_ITEMS = [
-  { name: "Work", icon: Briefcase },
-  { name: "About", icon: User },
+  { name: "Work", },
+  { name: "About", },
 ] as const;
 
 /**
@@ -27,7 +27,7 @@ export function WorkAboutToggle({ view, onViewChange }: Props) {
   };
 
   return (
-    <div className="mx-auto max-w-6xl px-6 pt-4 pb-0">
+    <div className="relative z-10 mx-auto max-w-6xl px-6 pt-4 pb-0">
       <NavBar
         items={WORK_ABOUT_ITEMS}
         activeTab={activeTab}

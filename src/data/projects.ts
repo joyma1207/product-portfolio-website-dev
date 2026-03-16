@@ -15,6 +15,10 @@ export type Project = {
   role: string;
   tagline?: string; // short line for grid card; if missing, role is shown
   logo?: string; // path or URL
+  /** Optional image(s) shown on the grid card only (not in modal demo). Single string = one image; array = multiple images. */
+  cardImage?: string | string[];
+  /** When cardImage is an array: "side-by-side" (default) or "stagger-overlap". */
+  cardImageLayout?: "side-by-side" | "stagger-overlap";
   timeline: string;
   teamSize: string;
   problem: string;
@@ -31,6 +35,7 @@ export const projects: Project[] = [
     id: "storyteller",
     company: "Storyteller",
     role: "Project Delivery Manager",
+    logo: "/assets/storyteller-logo.png",
     tagline:
       "Delivering TikTok-style vertical video products and personalization features for the sport teams you know and love.",
     timeline: "June 2025 - September 2025",
@@ -50,27 +55,18 @@ export const projects: Project[] = [
       "67% lift in team operational velocity after the QA workflow overhaul.",
     ].join("\n"),
     media: [
-      {
-        type: "image",
-        url: "/assets/storyteller-grid-timberwolves.png",
-        title: "Timberwolves app — Home with Latest News grid & game cards",
-      },
-      {
-        type: "image",
-        url: "/assets/storyteller-grid-lions.png",
-        title: "Lions app — Storyteller grid (Lions in Munich, Headlines, Highlights)",
-      },
-      {
-        type: "image",
-        url: "/assets/storyteller-grid-fis.png",
-        title: "FIS app — Athlete/event profiles & upcoming major events",
-      },
+      { type: "image", url: "/assets/storyteller-grid-1.png" },
+      { type: "image", url: "/assets/storyteller-grid-2.png" },
+      { type: "image", url: "/assets/storyteller-grid-3.png" },
+      { type: "image", url: "/assets/storyteller-grid-4.png" },
+      { type: "image", url: "/assets/storyteller-grid-5.png" },
     ],
   },
   {
     id: "united-way",
     company: "United Way",
     role: "Digital Transformation Consultant",
+    logo: "/assets/united-way-logo.png",
     tagline:
       "Personalized donor portal, a new mobile UI (with a Chatbot agent!), and a modernized data management system for the best digital donor experience.",
     timeline: "May 2024 – December 2024",
@@ -88,12 +84,16 @@ export const projects: Project[] = [
       "91% projected retention from segments using the personalized portal and recommendations.",
       "New mobile UI shipped and in use.",
     ].join("\n"),
+    cardImage: "/assets/united-way-card.png",
     media: [],
   },
   {
     id: "cibc",
     company: "CIBC",
     role: "AI Strategy Consultant",
+    logo: "/assets/cibc-logo.png",
+    cardImage: ["/assets/cibc-card.png", "/assets/cibc-card-2.png", "/assets/cibc-card-3.png"],
+    cardImageLayout: "stagger-overlap",
     tagline:
       "Designing AI governance and risk management strategy for improved client trust.",
     timeline: "May 2024 – June 2024",
@@ -112,6 +112,8 @@ export const projects: Project[] = [
     id: "sickkids",
     company: "SickKids",
     role: "Change Management Consultant",
+    logo: "/assets/sickkids-logo.png",
+    cardImage: "/assets/sickkids-card.png",
     tagline: "Streamlining complex surgery operations.",
     timeline: "May 2024 – June 2024",
     teamSize: "—",
@@ -129,6 +131,8 @@ export const projects: Project[] = [
     id: "adobe-ivey",
     company: "Adobe Ivey Digital Innovation Conference",
     role: "Technology Consultant",
+    logo: "https://static.cdnlogo.com/logos/a/90/adobe.png",
+    cardImage: "/assets/adobe-card.png",
     tagline:
       "Adobe Digital Experiences product strategy to drive credit card acquisitions at [confidential] bank.",
     timeline: "September 2023",
@@ -147,6 +151,7 @@ export const projects: Project[] = [
     id: "caisa-fashion",
     company: "CAISA Fashion Show",
     role: "Creative Director",
+    logo: "/assets/caisa-fashion-logo.png",
     tagline:
       "Directed Canada's largest student-run charity fashion show with 1000+ attendees every year.",
     timeline: "September 2019 – April 2023",
@@ -159,6 +164,7 @@ export const projects: Project[] = [
       "$60,000 profit generated for charity; 1000+ attendees at the show.",
       "Successful COVID pivot—team and objectives realigned and executed.",
     ].join("\n"),
+    cardImage: ["/assets/caisa-card-1.png", "/assets/caisa-card-2.png"],
     media: [],
   },
 ];

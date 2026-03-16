@@ -16,14 +16,12 @@ export const site = {
     "MSc Digital Management @ Ivey Business School · BA Kinesiology @ Western University",
   certification: "PMP expected May 2026 · Google Project Management Certificate",
 
-  /** All About Me — aligned with PM roles (customer-first, cross-functional, discovery→launch, data/research); keeps your voice. */
-  allAboutMe: `I love discovering, designing, building, and launching new ideas, and I love how my unique background in business, technology, design and healthcare innovations help me do this: I've been told I bring a fresh perspective and ideas people haven't considered, and this is where my product thinking sits. 
+  /** All About Me — aligned with PM roles (customer-first, cross-functional, discovery→launch); keeps your voice. */
+  allAboutMe: `My passions lay in the intersection of design, technology and the evolution of AI - and how we can use it to help people, whether it's users, customers, coworkers, and beyond. This is why I love product: I get excited by new ideas and by making them real. There's nothing quite like launching apps and features that makes an impact, gets people excited, and makes their  better.
 
-  My background means that I also had the opportunity to work with people from different backgrounds. I've built 
+I've had experiences launching AI solutions, apps, and AI-powered features across consulting, sports & entertainment tech, non-profit, healthcare, and I'm interested in exploring more industries. I love how my diverse background gives me a unique ability to bring ideas to the table that feel fresh and interesting. 
 
-I've owned end-to-end software product delivery in sports & entertainment, non-profit, banking, and healthcare—leading roadmaps, aligning stakeholders, and shipping features that makes an impact for the people (whether it's my team members, the users, or anyone in between). I'm comfortable influencing and aligning intent, resources, and prioritization across design, engineering, and the business, and I like finding growth opportunities through quantitative work, case studies, and a clear view of what's possible in a fast-moving environment.
-
-I have a Bachelor's and a Master's in Digital Management (Ivey), 2+ years in tech and consulting, and a mix of product sense and technical depth from building with AI, agile delivery, and side projects like this portfolio. 
+Lately I've been exploring vibe coding and tinkering with AI-powered workflows - building side projects like this portfolio. 
 
 You can also find me writing Beli reviews for under-the-radar food spots, at the rock climbing gym, or painting at home to my newest Spotify playlist.`,
 

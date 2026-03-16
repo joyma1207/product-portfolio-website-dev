@@ -30,11 +30,13 @@ export function AboutSection() {
           {/* Top: name, location, education */}
           <div id="all-about-me" className="scroll-mt-24">
             <div className="flex flex-col gap-8 sm:flex-row sm:items-start sm:gap-10">
-              <div
-                className="flex h-40 w-40 flex-shrink-0 items-center justify-center rounded-full bg-gray-200/80 text-gray-600 text-sm font-medium tracking-brand sm:h-52 sm:w-52"
-                aria-hidden
-              >
-                My profile picture
+              <div className="relative h-40 w-40 flex-shrink-0 overflow-hidden rounded-full bg-gray-200/80 sm:h-52 sm:w-52">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/assets/profile.png"
+                  alt=""
+                  className="h-full w-full object-cover object-[center_40%] scale-[1.8]"
+                />
               </div>
               <div className="min-w-0 flex-1 space-y-3">
                 <h2 className="text-xl font-semibold tracking-brand text-gray-900 sm:text-2xl">

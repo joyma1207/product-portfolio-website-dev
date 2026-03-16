@@ -83,17 +83,16 @@ export const Footer = React.forwardRef<HTMLDivElement, FooterProps>(
             <div className="mt-16 flex flex-wrap justify-start gap-x-12 gap-y-8 lg:col-span-8 lg:mt-0 lg:justify-end">
               {columns.map(({ title, titleHref, links }) => (
                 <div key={title}>
-                  {titleHref ? (
-                    <a
-                      href={titleHref}
-                      className="text-sm font-semibold hover:text-foreground/90"
-                      onClick={(e) => {
-                        if (onColumnTitleClick) {
-                          e.preventDefault();
-                          onColumnTitleClick(titleHref);
-                        }
-                      }}
+                  {titleHref && onColumnTitleClick ? (
+                    <button
+                      type="button"
+                      className="text-sm font-semibold hover:text-foreground/90 text-left bg-transparent border-none cursor-pointer p-0"
+                      onClick={() => onColumnTitleClick(titleHref)}
                     >
+                      {title}
+                    </button>
+                  ) : titleHref ? (
+                    <a href={titleHref} className="text-sm font-semibold hover:text-foreground/90">
                       {title}
                     </a>
                   ) : (
