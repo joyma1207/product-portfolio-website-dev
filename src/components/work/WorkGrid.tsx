@@ -42,7 +42,7 @@ export function WorkGrid({ projects, onOpenProject }: Props) {
                   reduceMotion ? { duration: 0 } : { type: "spring", stiffness: 400, damping: 30 }
                 }
               >
-                <ProjectCard project={project} />
+                <ProjectCard project={project} onOpen={() => onOpenProject(project.id)} />
               </motion.div>
             </div>
           );

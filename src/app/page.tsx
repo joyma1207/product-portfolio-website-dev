@@ -8,6 +8,7 @@ import { WorkSection } from "@/components/work/WorkSection";
 import { AboutSection } from "@/components/AboutSection";
 import { ProjectModal } from "@/components/work/ProjectModal";
 import { projects } from "@/data/projects";
+import { GradientBackground, ABOUT_PAGE_GRADIENTS } from "@/components/ui/gradient-background";
 
 export default function Home() {
   const [view, setView] = useState<"work" | "about">("work");
@@ -47,15 +48,43 @@ export default function Home() {
 
   return (
     <div className="flex min-h-screen flex-col">
-      <header className="relative z-20 w-full bg-background">
-        <Hero />
-        <WorkAboutToggle view={view} onViewChange={setView} />
+      <header className="relative z-20 w-full">
+        {view === "about" ? (
+          <GradientBackground
+            gradients={ABOUT_PAGE_GRADIENTS}
+            enableCenterContent={false}
+            fullPage={false}
+            animationDuration={10}
+            className="min-h-0"
+          >
+            <Hero variant="onGradient" />
+          </GradientBackground>
+        ) : (
+          <div className="w-full bg-background">
+            <Hero />
+          </div>
+        )}
+        <div className="w-full bg-background">
+          <WorkAboutToggle view={view} onViewChange={setView} />
+        </div>
       </header>
       <main className="relative z-0 flex-1">
         {view === "work" && (
-          <WorkSection onOpenProject={setActiveProjectId} />
+          <GradientBackground
+            gradients={ABOUT_PAGE_GRADIENTS}
+            enableCenterContent={false}
+            contentClassName="flex-col flex-1"
+            animationDuration={10}
+            className="flex-1 min-h-full"
+          >
+            <WorkSection onOpenProject={setActiveProjectId} />
+          </GradientBackground>
         )}
-        {view === "about" && <AboutSection />}
+        {view === "about" && (
+          <div className="bg-background min-h-full">
+            <AboutSection />
+          </div>
+        )}
       </main>
       <ProjectModal
         project={activeProject}

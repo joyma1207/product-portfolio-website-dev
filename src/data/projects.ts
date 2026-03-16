@@ -48,7 +48,7 @@ export const projects: Project[] = [
     ].join("\n"),
     problem:
       "At Storyteller, clients look for vertical video products and personalized features to increase content engagement on their iOS, Android, and web applications without the burden of in-house development. ",
-    solution: "I built product launch roadmaps, integrating vertical videos, advertisements, and AI-powered personalization features. ",
+    solution: "I built customized product launch roadmaps, launching vertical videos, advertisements, and AI-powered personalization features based on client requirements and vendor capabilities. ",
     impact: [
       "700% increase in high-impact content engagement for clients.",
       "Launch timeline cut from 4+ months to ~2 months (50% faster).",
@@ -116,7 +116,7 @@ export const projects: Project[] = [
     cardImage: "/assets/sickkids-card.png",
     tagline: "Streamlining complex surgery operations.",
     timeline: "May 2024 – June 2024",
-    teamSize: "—",
+    teamSize: "6 Consultants",
     problem:
       "Complex surgery workflows had high friction for patients and staff, with room to reduce errors and improve efficiency. SickKids was looking at AI, 3D modelling, and Digital Twins but needed a clear path to implementation.",
     solution:
