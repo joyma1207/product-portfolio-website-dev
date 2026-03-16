@@ -79,7 +79,7 @@ export function NavBar({
                   onTabChange(item.name);
                 }}
                 className={cn(
-                  "relative z-0 cursor-pointer text-sm font-semibold px-6 py-2 rounded-full transition-colors",
+                  "relative z-0 cursor-pointer text-base font-semibold px-6 py-2 rounded-full transition-colors",
                   "text-foreground/80 hover:text-primary",
                   isActive && "bg-muted text-primary",
                 )}
@@ -95,7 +95,7 @@ export function NavBar({
               key={item.name}
               href={item.url ?? "#"}
               className={cn(
-                "relative cursor-pointer text-sm font-semibold px-6 py-2 rounded-full transition-colors",
+                "relative cursor-pointer text-base font-semibold px-6 py-2 rounded-full transition-colors",
                 "text-foreground/80 hover:text-primary",
                 isActive && "bg-muted text-primary",
               )}

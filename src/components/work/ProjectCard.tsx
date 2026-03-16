@@ -210,10 +210,10 @@ export function ProjectCard({ project, onOpen }: Props) {
         <div
           className={`min-w-0 flex-shrink-0 px-6 pb-6 ${isStorytellerGrid || showThreeImagesLayout || showCardImage ? "pt-1" : "pt-6"}`}
         >
-          <h3 className="text-lg font-bold text-gray-900 tracking-brand">
+          <h3 className="text-xl font-bold text-gray-900 tracking-brand">
             {project.company}
           </h3>
-          <p className="mt-2 line-clamp-2 text-sm leading-snug text-gray-800">
+          <p className="mt-2 line-clamp-2 text-sm leading-snug text-gray-500">
             {project.tagline ?? project.role}
           </p>
         </div>

@@ -47,7 +47,7 @@ export function MenuVertical({
                 hover: { x: 0, skewX: skew },
               }}
               transition={{ duration: 0.3, ease: "easeOut" }}
-              className="text-sm font-semibold tracking-brand no-underline hover:text-primary"
+              className="text-base font-semibold tracking-brand no-underline hover:text-primary"
             >
               {item.label}
             </motion.a>
@@ -59,7 +59,7 @@ export function MenuVertical({
                 hover: { x: 0, skewX: skew },
               }}
               transition={{ duration: 0.3, ease: "easeOut" }}
-              className="text-sm font-semibold tracking-brand no-underline hover:text-primary"
+              className="text-base font-semibold tracking-brand no-underline hover:text-primary"
             >
               {item.label}
             </MotionLink>

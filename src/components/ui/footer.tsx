@@ -49,7 +49,7 @@ export const Footer = React.forwardRef<HTMLDivElement, FooterProps>(
             <div className="lg:col-span-4">
               <a
                 href="#"
-                className="text-xl font-semibold"
+                className="text-2xl font-semibold"
                 onClick={(e) => {
                   if (onBrandClick) {
                     e.preventDefault();
@@ -59,11 +59,11 @@ export const Footer = React.forwardRef<HTMLDivElement, FooterProps>(
               >
                 {brand.name}
               </a>
-              <p className="text-sm text-foreground/60">
+              <p className="text-base text-foreground/60">
                 {brand.description}
               </p>
 
-              <p className="text-sm font-light text-foreground/55 mt-3.5">
+              <p className="text-base font-light text-foreground/55 mt-3.5">
                 {socialLinks.map((link, index) => (
                   <React.Fragment key={link.name}>
                     <a
@@ -86,24 +86,24 @@ export const Footer = React.forwardRef<HTMLDivElement, FooterProps>(
                   {titleHref && onColumnTitleClick ? (
                     <button
                       type="button"
-                      className="text-sm font-semibold hover:text-foreground/90 text-left bg-transparent border-none cursor-pointer p-0"
+                      className="text-base font-semibold hover:text-foreground/90 text-left bg-transparent border-none cursor-pointer p-0"
                       onClick={() => onColumnTitleClick(titleHref)}
                     >
                       {title}
                     </button>
                   ) : titleHref ? (
-                    <a href={titleHref} className="text-sm font-semibold hover:text-foreground/90">
+                    <a href={titleHref} className="text-base font-semibold hover:text-foreground/90">
                       {title}
                     </a>
                   ) : (
-                    <h3 className="text-sm font-semibold">{title}</h3>
+                    <h3 className="text-base font-semibold">{title}</h3>
                   )}
                   <ul className="mt-4 space-y-2.5">
                     {links.map(({ name, Icon, href }) => (
                       <li key={name}>
                         <a
                           href={href || "#"}
-                          className="text-sm transition-all text-foreground/60 hover:text-foreground/90 group"
+                          className="text-base transition-all text-foreground/60 hover:text-foreground/90 group"
                         >
                           {Icon && (
                             <Icon className="inline stroke-2 h-4 mr-1.5 transition-all stroke-foreground/60 group-hover:stroke-foreground/90" />
@@ -120,7 +120,7 @@ export const Footer = React.forwardRef<HTMLDivElement, FooterProps>(
 
           {copyright && (
             <div className="mt-20 border-t pt-6 pb-8 text-left">
-              <p className="text-xs text-foreground/55">{copyright}</p>
+              <p className="text-sm text-foreground/55">{copyright}</p>
             </div>
           )}
         </div>

@@ -39,15 +39,15 @@ export function AboutSection() {
                 />
               </div>
               <div className="min-w-0 flex-1 space-y-3">
-                <h2 className="text-xl font-semibold tracking-brand text-gray-900 sm:text-2xl">
+                <h2 className="text-2xl font-semibold tracking-brand text-gray-900 sm:text-3xl">
                   Hi! My name is Joy :))
                 </h2>
-                <p className="text-gray-700">{site.location}</p>
-                <p className="text-gray-700 text-sm leading-relaxed">
+                <p className="text-gray-700 text-lg">{site.location}</p>
+                <p className="text-gray-700 text-base leading-relaxed">
                   {site.education}
                 </p>
-                <p className="text-gray-700 text-sm">{site.certification}</p>
-                <p className="flex flex-wrap items-center gap-1 pt-1 text-sm text-gray-700">
+                <p className="text-gray-700 text-base">{site.certification}</p>
+                <p className="flex flex-wrap items-center gap-1 pt-1 text-base text-gray-700">
                   <Link
                     href={`mailto:${site.email}`}
                     className="hover:text-gray-900 underline-offset-2 hover:underline"
@@ -79,10 +79,10 @@ export function AboutSection() {
 
           {/* All About Me — brief intro */}
           <div className="mt-8 pt-8 border-t border-gray-200/70">
-            <h3 className="text-lg font-semibold tracking-brand text-gray-900">
+            <h3 className="text-xl font-semibold tracking-brand text-gray-900">
               All About Me
             </h3>
-            <div className="mt-3 space-y-4 text-sm text-gray-700 leading-relaxed">
+            <div className="mt-3 space-y-4 text-base text-gray-700 leading-relaxed">
               {site.allAboutMe.split(/\n\n+/).map((para, i) => (
                 <p key={i}>{para.trim()}</p>
               ))}
@@ -91,10 +91,10 @@ export function AboutSection() {
 
           {/* My experiences — placeholder for your components later */}
           <div id="experiences" className="scroll-mt-24 pt-12">
-            <h3 className="text-lg font-semibold tracking-brand text-gray-900">
+            <h3 className="text-xl font-semibold tracking-brand text-gray-900">
               My experiences
             </h3>
-            <p className="mt-3 text-sm text-gray-700 leading-relaxed">
+            <p className="mt-3 text-base text-gray-700 leading-relaxed">
               {site.experiencesIntro}
             </p>
             {/* Drop your experience components here later */}
@@ -102,16 +102,16 @@ export function AboutSection() {
 
           {/* Things I'm super proud about */}
           <div id="proud" className="scroll-mt-24 pt-12">
-            <h3 className="text-lg font-semibold tracking-brand text-gray-900">
+            <h3 className="text-xl font-semibold tracking-brand text-gray-900">
               Things I'm super proud about
             </h3>
             <ul className="mt-4 space-y-6">
               {site.proud.map((item, i) => (
                 <li key={i}>
-                  <h4 className="text-base font-medium text-gray-900">
+                  <h4 className="text-lg font-medium text-gray-900">
                     {item.title}
                   </h4>
-                  <p className="mt-1 text-sm text-gray-700 leading-relaxed">
+                  <p className="mt-1 text-base text-gray-700 leading-relaxed">
                     {item.body}
                   </p>
                 </li>
@@ -121,13 +121,13 @@ export function AboutSection() {
 
           {/* Contact me */}
           <div id="contact" className="scroll-mt-24 pt-12">
-            <h3 className="text-lg font-semibold tracking-brand text-gray-900">
+            <h3 className="text-xl font-semibold tracking-brand text-gray-900">
               Contact me
             </h3>
-            <p className="mt-3 text-sm text-gray-700 leading-relaxed">
+            <p className="mt-3 text-base text-gray-700 leading-relaxed">
               Always down to chat about product, AI, or just life. Say hi over email or LinkedIn.
             </p>
-            <p className="mt-3 flex flex-wrap items-center gap-1 text-sm text-gray-700">
+            <p className="mt-3 flex flex-wrap items-center gap-1 text-base text-gray-700">
               <Link
                 href={`mailto:${site.email}`}
                 className="hover:text-gray-900 underline-offset-2 hover:underline"

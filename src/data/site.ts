@@ -17,7 +17,7 @@ export const site = {
   certification: "PMP expected May 2026 · Google Project Management Certificate",
 
   /** All About Me — aligned with PM roles (customer-first, cross-functional, discovery→launch); keeps your voice. */
-  allAboutMe: `My passions lay in the intersection of design, technology and the evolution of AI - and how we can use it to help people, whether it's users, customers, coworkers, and beyond. This is why I love product: I get excited by new ideas and by making them real. There's nothing quite like launching apps and features that makes an impact, gets people excited, and makes their  better.
+  allAboutMe: `My passions lay in the intersection of product, design, technology and the evolution of AI - and how I can used my combined skills to help people, whether it's users, customers, coworkers, and beyond. This is why I love product: I get excited by new ideas and by making them real. There's nothing quite like launching apps and features that makes an impact, gets people excited, and makes their  better.
 
 I've had experiences launching AI solutions, apps, and AI-powered features across consulting, sports & entertainment tech, non-profit, healthcare, and I'm interested in exploring more industries. I love how my diverse background gives me a unique ability to bring ideas to the table that feel fresh and interesting. 
 
