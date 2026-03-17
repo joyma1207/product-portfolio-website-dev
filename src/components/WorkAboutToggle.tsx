@@ -1,7 +1,7 @@
 "use client";
 
-import { Briefcase, User } from "lucide-react";
 import { NavBar } from "@/components/ui/tubelight-navbar";
+import { site } from "@/data/site";
 
 type View = "work" | "about";
 
@@ -10,19 +10,26 @@ type Props = {
   onViewChange: (v: View) => void;
 };
 
-/** Work/About toggle —  */
+/** Work / About / Resume toggle */
 const WORK_ABOUT_ITEMS = [
-  { name: "Work", },
-  { name: "About", },
+  { name: "Work" },
+  { name: "About" },
+  { name: "Resume" },
 ] as const;
 
 /**
- * PRD: Switch to flip between "Work" and "About". Uses 21st.dev tubelight style, left-aligned with Hero.
+ * PRD: Switch to flip between "Work" and "About" (and open Resume).
+ * Uses 21st.dev tubelight style, left-aligned with Hero.
  */
 export function WorkAboutToggle({ view, onViewChange }: Props) {
   const activeTab = view === "work" ? "Work" : "About";
 
   const handleTabChange = (name: string) => {
+    if (name === "Resume") {
+      window.open(site.resumeUrl, "_blank", "noopener,noreferrer");
+      return;
+    }
+
     onViewChange(name === "Work" ? "work" : "about");
   };
 

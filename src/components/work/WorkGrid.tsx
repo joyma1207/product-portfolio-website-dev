@@ -17,7 +17,7 @@ export function WorkGrid({ projects, onOpenProject }: Props) {
   const reduceMotion = useReducedMotion();
 
   return (
-    <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6">
+    <div className="grid grid-cols-1 gap-5 lg:grid-cols-2 lg:gap-6">
       {Array.from({ length: GRID_SIZE }, (_, i) => {
         const project = projects[i];
         if (project) {
