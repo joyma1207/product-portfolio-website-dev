@@ -26,7 +26,6 @@ export function Footer({
         name: site.name,
         description: site.tagline,
       }}
-      hireMeHref={site.resumeUrl}
       onBrandClick={onGoToHome}
       onColumnTitleClick={(href) => {
         if (href === "#work") onNavigateToView?.("work");
