@@ -42,18 +42,20 @@ export function Hero({ variant = "default" }: HeroProps) {
           {site.name}
         </h1>
         <p className="mt-[var(--hero-title-tagline-gap)] text-gray-600 text-lg md:text-xl w-full max-w-full">
-          Launching consumer products and features that grow engagement, loyalty, and love for {" "}
-          <span className="inline-block whitespace-nowrap">
+          <span className="block md:inline">
+            Launching consumer products and features that grow engagement, loyalty, and love for
+          </span>{" "}
+          <span className="block md:inline md:ml-2 whitespace-nowrap text-[#2563EB] font-medium">
             <Typewriter
               text={HERO_TYPEWRITER_WORDS}
               speed={70}
               waitTime={1500}
               deleteSpeed={20}
-              className="text-[#2563EB] font-medium"
+              className=""
               cursorChar="|"
             />
+            .
           </span>
-          .
         </p>
         <p className="mt-2 text-gray-500 text-base md:text-lg w-full max-w-full">
           With creative solutions and user-first thinking, I&apos;ve helped businesses lift content engagement by 700% and ship features 50% faster.
