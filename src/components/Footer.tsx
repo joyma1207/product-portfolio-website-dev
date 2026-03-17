@@ -62,7 +62,7 @@ export function Footer({
           ],
         },
       ]}
-      copyright={`© ${new Date().getFullYear()} ${site.name}`}
+      copyright={`© ${new Date().getFullYear()} ${site.name} · Built with Next.js.`}
     />
   );
 }
