@@ -51,7 +51,7 @@ export function NavBar({
               {isActive && (
                 <motion.div
                   layoutId="lamp"
-                  className="pointer-events-none absolute inset-0 w-full bg-primary/10 rounded-full -z-10"
+                  className="pointer-events-none absolute inset-0 w-full bg-gray-200 rounded-full -z-10"
                   initial={false}
                   transition={{
                     type: "spring",
@@ -81,7 +81,7 @@ export function NavBar({
                 className={cn(
                   "relative z-0 cursor-pointer text-base font-semibold px-6 py-2 rounded-full transition-colors",
                   "text-foreground/80 hover:text-primary",
-                  isActive && "bg-muted text-primary",
+                  isActive && "bg-gray-100 text-gray-900",
                 )}
                 aria-pressed={isActive}
               >
@@ -97,7 +97,7 @@ export function NavBar({
               className={cn(
                 "relative cursor-pointer text-base font-semibold px-6 py-2 rounded-full transition-colors",
                 "text-foreground/80 hover:text-primary",
-                isActive && "bg-muted text-primary",
+                isActive && "bg-gray-100 text-gray-900",
               )}
             >
               {content}

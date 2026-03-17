@@ -1,11 +1,22 @@
 "use client";
 
 import { site } from "@/data/site";
+import { Typewriter } from "@/components/ui/typewriter";
 
 type HeroProps = {
   /** When "onGradient", hero has transparent bg so gradient shows (e.g. About view). */
   variant?: "default" | "onGradient";
 };
+
+const HERO_TYPEWRITER_WORDS = [
+  "you",
+  "consulting",
+  "tech",
+  "sports & entertainment",
+  "non profit",
+  "healthcare",
+  "and more",
+];
 
 /**
  * PRD: Hero with Joy's name + brief description.
@@ -27,10 +38,15 @@ export function Hero({ variant = "default" }: HeroProps) {
           {site.name}
         </h1>
         <p className="mt-[var(--hero-title-tagline-gap)] text-gray-600 text-lg md:text-xl w-full max-w-full">
-          {site.tagline}
-        </p>
-        <p className="mt-2 text-gray-500 text-base md:text-lg">
-          sports & entertainment, consulting, healthcare, banking
+          Launching digital products, app features, and bringing technology & AI solutions for{" "}
+          <Typewriter
+            text={HERO_TYPEWRITER_WORDS}
+            speed={70}
+            waitTime={1500}
+            deleteSpeed={40}
+            className="text-[#2563EB] font-medium"
+            cursorChar="|"
+          />
         </p>
       </div>
     </header>
