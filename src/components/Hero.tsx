@@ -38,7 +38,10 @@ export function Hero({ variant = "default" }: HeroProps) {
           {site.name}
         </h1>
         <p className="mt-[var(--hero-title-tagline-gap)] text-gray-600 text-lg md:text-xl w-full max-w-full">
-          Launching digital products, app features, and bringing technology & AI solutions for{" "}
+          Launching digital products, app features,
+          <br className="md:hidden" />
+          {" "}and bringing technology & AI solutions for{" "}
+          <br className="md:hidden" />
           <Typewriter
             text={HERO_TYPEWRITER_WORDS}
             speed={70}
