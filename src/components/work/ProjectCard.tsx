@@ -220,12 +220,12 @@ export function ProjectCard({ project, onOpen }: Props) {
         <div
           className={`mt-auto min-w-0 flex-shrink-0 px-6 pb-6 ${isStorytellerGrid || showThreeImagesLayout || showCardImage ? "pt-1" : "pt-6"}`}
         >
-          <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+          <div className="flex flex-col sm:flex-row flex-wrap items-start sm:items-baseline justify-start sm:justify-between gap-y-1 gap-x-3">
             <h3 className="text-xl font-bold text-gray-900 tracking-brand">
               {project.company}
             </h3>
             {CARD_LABELS[project.id] && (
-              <span className="text-xs font-medium uppercase tracking-wider text-gray-500 text-right">
+              <span className="text-xs font-medium uppercase tracking-wider text-gray-500 text-left sm:text-right">
                 {CARD_LABELS[project.id]}
               </span>
             )}
