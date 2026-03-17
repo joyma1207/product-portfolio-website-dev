@@ -56,6 +56,9 @@ export function Footer({
           titleHref: "#about",
           links: [
             { name: "Resume", href: site.resumeUrl },
+            { name: "Skills & Capabilities", href: "#skills-capabilities" },
+            { name: "Process", href: "#process" },
+            { name: "Tools I Use", href: "#tools" },
           ],
         },
       ]}
