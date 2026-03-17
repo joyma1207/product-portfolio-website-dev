@@ -71,14 +71,13 @@ export function ProjectModal({ project, onClose }: Props) {
               role="dialog"
               aria-modal="true"
               aria-labelledby={titleId}
-              className="relative flex w-full max-w-[min(98vw,72rem)] max-h-[98vh] flex-col overflow-hidden rounded-[30px] min-h-0"
+              className="relative flex w-full max-w-[min(98vw,72rem)] max-h-[98vh] flex-col overflow-hidden rounded-[30px] min-h-0 cursor-pointer"
               initial={reduceMotion ? false : { y: 16, scale: 0.98, opacity: 0 }}
               animate={{ y: 0, scale: 1, opacity: 1 }}
               exit={reduceMotion ? { opacity: 0 } : { y: 12, scale: 0.99, opacity: 0 }}
               transition={
                 reduceMotion ? { duration: 0.12 } : { type: "spring", stiffness: 260, damping: 26 }
               }
-              onClick={(e) => e.stopPropagation()}
             >
               <ShineBorder
                 borderRadius={30}
