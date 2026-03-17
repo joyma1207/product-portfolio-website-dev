@@ -1,21 +1,42 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Hero } from "@/components/Hero";
 import { WorkAboutToggle } from "@/components/WorkAboutToggle";
 import { Footer } from "@/components/Footer";
 import { WorkSection } from "@/components/work/WorkSection";
 import { AboutSection } from "@/components/AboutSection";
+import { ProjectModal } from "@/components/work/ProjectModal";
+import { projects } from "@/data/projects";
 
 export default function Home() {
   const [view, setView] = useState<"work" | "about">("work");
+  const [activeProjectId, setActiveProjectId] = useState<string | null>(null);
+  const activeProject = useMemo(
+    () => projects.find((p) => p.id === activeProjectId) ?? null,
+    [activeProjectId],
+  );
 
   const syncViewToHash = () => {
     const hash = window.location.hash;
-    if (hash === "#work") setView("work");
-    else if (hash === "#about") setView("about");
-    else setView("work");
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    const aboutHashes = ["#about", "#all-about-me", "#skills-capabilities", "#process", "#tools", "#contact", "#footer"];
+    if (hash === "#work") {
+      setView("work");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (aboutHashes.includes(hash)) {
+      setView("about");
+      if (hash === "#about" || hash === "") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        const id = hash.slice(1);
+        setTimeout(() => {
+          document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 150);
+      }
+    } else {
+      setView("work");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   };
 
   useEffect(() => {
@@ -26,16 +47,30 @@ export default function Home() {
 
   return (
     <div className="flex min-h-screen flex-col">
-      <header className="w-full bg-background">
-        <Hero />
-        <WorkAboutToggle view={view} onViewChange={setView} />
+      <header className="relative z-20 w-full">
+        <div className="w-full bg-background">
+          <Hero />
+        </div>
+        <div className="w-full bg-background">
+          <WorkAboutToggle view={view} onViewChange={setView} />
+        </div>
       </header>
-      <main className="flex-1">
+      <main className="relative z-0 flex-1">
         {view === "work" && (
-          <WorkSection />
+          <div className="flex-1 min-h-full bg-background">
+            <WorkSection onOpenProject={setActiveProjectId} />
+          </div>
         )}
-        {view === "about" && <AboutSection />}
+        {view === "about" && (
+          <div className="bg-background min-h-full">
+            <AboutSection />
+          </div>
+        )}
       </main>
+      <ProjectModal
+        project={activeProject}
+        onClose={() => setActiveProjectId(null)}
+      />
       <Footer
           onGoToHome={() => {
             setView("work");
@@ -47,6 +82,7 @@ export default function Home() {
             window.history.replaceState(null, "", `${window.location.pathname}#${view}`);
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
+          onOpenProject={setActiveProjectId}
         />
     </div>
   );

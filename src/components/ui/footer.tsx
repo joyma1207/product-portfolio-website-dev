@@ -3,6 +3,7 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 import { LucideIcon } from "lucide-react";
+import { SocialIcons } from "@/components/ui/social-icons";
 
 interface SocialLink {
   name: string;
@@ -13,6 +14,8 @@ interface FooterLink {
   name: string;
   Icon?: LucideIcon | React.FC<React.SVGProps<SVGSVGElement>>;
   href?: string;
+  /** When set, link is rendered as a button and this is called instead of navigating. */
+  onClick?: () => void;
 }
 
 interface FooterColumn {
@@ -26,7 +29,12 @@ interface FooterProps extends React.HTMLAttributes<HTMLDivElement> {
     name: string;
     description: string;
   };
+  /** Text links (e.g. "Email • LinkedIn"); ignored when socialEmail/socialLinkedIn are provided. */
   socialLinks: SocialLink[];
+  /** When provided with socialLinkedIn, the SocialIcons pill is shown instead of socialLinks. */
+  socialEmail?: string;
+  socialLinkedIn?: string;
+  socialGithub?: string;
   columns: FooterColumn[];
   copyright?: string;
   onBrandClick?: () => void;
@@ -34,7 +42,8 @@ interface FooterProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export const Footer = React.forwardRef<HTMLDivElement, FooterProps>(
-  ({ className, brand, socialLinks, columns, copyright, onBrandClick, onColumnTitleClick, ...props }, ref) => {
+  ({ className, brand, socialLinks, socialEmail, socialLinkedIn, socialGithub, columns, copyright, onBrandClick, onColumnTitleClick, ...props }, ref) => {
+    const useSocialIcons = socialEmail != null && socialLinkedIn != null;
     return (
       <div
         ref={ref}
@@ -49,7 +58,7 @@ export const Footer = React.forwardRef<HTMLDivElement, FooterProps>(
             <div className="lg:col-span-4">
               <a
                 href="#"
-                className="text-xl font-semibold"
+                className="text-2xl font-semibold"
                 onClick={(e) => {
                   if (onBrandClick) {
                     e.preventDefault();
@@ -59,58 +68,80 @@ export const Footer = React.forwardRef<HTMLDivElement, FooterProps>(
               >
                 {brand.name}
               </a>
-              <p className="text-sm text-foreground/60">
+              <p className="text-base text-foreground/60">
                 {brand.description}
               </p>
 
-              <p className="text-sm font-light text-foreground/55 mt-3.5">
-                {socialLinks.map((link, index) => (
-                  <React.Fragment key={link.name}>
-                    <a
-                      className="hover:text-foreground/90"
-                      target="_blank"
-                      href={link.href}
-                      rel="noopener noreferrer"
-                    >
-                      {link.name}
-                    </a>
-                    {index < socialLinks.length - 1 && " • "}
-                  </React.Fragment>
-                ))}
-              </p>
+              <div className="mt-3.5">
+                {useSocialIcons ? (
+                  <SocialIcons
+                    email={socialEmail}
+                    linkedIn={socialLinkedIn}
+                    github={socialGithub}
+                  />
+                ) : (
+                  <p className="text-base font-light text-foreground/55">
+                    {socialLinks.map((link, index) => (
+                      <React.Fragment key={link.name}>
+                        <a
+                          className="hover:text-foreground/90"
+                          target="_blank"
+                          href={link.href}
+                          rel="noopener noreferrer"
+                        >
+                          {link.name}
+                        </a>
+                        {index < socialLinks.length - 1 && " • "}
+                      </React.Fragment>
+                    ))}
+                  </p>
+                )}
+              </div>
             </div>
 
-            <div className="mt-16 flex flex-wrap justify-end gap-x-12 gap-y-8 lg:col-span-8 lg:mt-0">
+            <div className="mt-16 flex flex-wrap justify-start gap-x-12 gap-y-8 lg:col-span-8 lg:mt-0 lg:justify-end">
               {columns.map(({ title, titleHref, links }) => (
                 <div key={title}>
-                  {titleHref ? (
-                    <a
-                      href={titleHref}
-                      className="text-sm font-semibold hover:text-foreground/90"
-                      onClick={(e) => {
-                        if (onColumnTitleClick) {
-                          e.preventDefault();
-                          onColumnTitleClick(titleHref);
-                        }
-                      }}
+                  {titleHref && onColumnTitleClick ? (
+                    <button
+                      type="button"
+                      className="text-base font-semibold hover:text-foreground/90 text-left bg-transparent border-none cursor-pointer p-0"
+                      onClick={() => onColumnTitleClick(titleHref)}
                     >
+                      {title}
+                    </button>
+                  ) : titleHref ? (
+                    <a href={titleHref} className="text-base font-semibold hover:text-foreground/90">
                       {title}
                     </a>
                   ) : (
-                    <h3 className="text-sm font-semibold">{title}</h3>
+                    <h3 className="text-base font-semibold">{title}</h3>
                   )}
                   <ul className="mt-4 space-y-2.5">
-                    {links.map(({ name, Icon, href }) => (
+                    {links.map(({ name, Icon, href, onClick }) => (
                       <li key={name}>
-                        <a
-                          href={href || "#"}
-                          className="text-sm transition-all text-foreground/60 hover:text-foreground/90 group"
-                        >
-                          {Icon && (
-                            <Icon className="inline stroke-2 h-4 mr-1.5 transition-all stroke-foreground/60 group-hover:stroke-foreground/90" />
-                          )}
-                          {name}
-                        </a>
+                        {onClick ? (
+                          <button
+                            type="button"
+                            onClick={onClick}
+                            className="text-base transition-all text-foreground/60 hover:text-foreground/90 group text-left bg-transparent border-none cursor-pointer p-0"
+                          >
+                            {Icon && (
+                              <Icon className="inline stroke-2 h-4 mr-1.5 transition-all stroke-foreground/60 group-hover:stroke-foreground/90" />
+                            )}
+                            {name}
+                          </button>
+                        ) : (
+                          <a
+                            href={href || "#"}
+                            className="text-base transition-all text-foreground/60 hover:text-foreground/90 group"
+                          >
+                            {Icon && (
+                              <Icon className="inline stroke-2 h-4 mr-1.5 transition-all stroke-foreground/60 group-hover:stroke-foreground/90" />
+                            )}
+                            {name}
+                          </a>
+                        )}
                       </li>
                     ))}
                   </ul>
@@ -120,8 +151,8 @@ export const Footer = React.forwardRef<HTMLDivElement, FooterProps>(
           </div>
 
           {copyright && (
-            <div className="mt-20 border-t pt-6 pb-8">
-              <p className="text-xs text-foreground/55">{copyright}</p>
+            <div className="mt-20 border-t pt-6 pb-8 text-left">
+              <p className="text-sm text-foreground/55">{copyright}</p>
             </div>
           )}
         </div>
