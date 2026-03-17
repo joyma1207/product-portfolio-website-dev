@@ -85,8 +85,9 @@ export function ProjectModal({ project, onClose }: Props) {
                 borderWidth={2}
                 duration={14}
                 color={MODAL_SHINE_COLORS}
-                className="flex h-full min-h-0 w-full flex-col overflow-y-auto overflow-x-hidden rounded-[30px] bg-white p-0 shadow-lg"
+                className="flex h-full min-h-0 w-full flex-col overflow-hidden rounded-[30px] bg-white p-0 shadow-lg"
               >
+                <div className="flex min-h-0 flex-1 flex-col overflow-y-auto overflow-x-hidden">
                 {/* Header: company logo, company name below — left aligned (no divider below) */}
                 <div className="flex flex-shrink-0 w-full items-start justify-between gap-4 px-6 pt-5 pb-2 sm:px-8 sm:pt-6 sm:pb-3">
                   <div className="flex min-w-0 flex-col items-start gap-2 text-left">
@@ -184,6 +185,7 @@ export function ProjectModal({ project, onClose }: Props) {
                       </div>
                     </section>
                   </div>
+                </div>
                 </div>
               </ShineBorder>
             </motion.div>
