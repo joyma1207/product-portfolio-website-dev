@@ -23,7 +23,7 @@ const THREE_IMAGES_LAYOUT_IDS = [] as const;
 
 /** Right-aligned card labels (project id → pipe-separated list). */
 const CARD_LABELS: Partial<Record<string, string>> = {
-  storyteller: "Product Delivery | Feature Launch | AI",
+  storyteller: "Consumer Products | Features Launches | AI",
   "united-way": "Personalizations | Platforms",
   sickkids: "Consulting| Growth | Strategy | ",
   cibc: "Consulting | Banking | Governance",
@@ -238,7 +238,7 @@ export function ProjectCard({ project, onOpen }: Props) {
           </p>
           <p className="mt-1 text-xs text-gray-500">
             {project.id === "storyteller" &&
-              "Impact: 700% lift in high-impact engagement · 50% faster launches"}
+              "Impact: 700% lift in high-impact content engagement · 50% faster launches"}
             {project.id === "united-way" &&
               "Impact: +20% projected donations · 91% projected retention"}
             {project.id === "cibc" &&

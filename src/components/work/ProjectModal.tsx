@@ -175,7 +175,7 @@ export function ProjectModal({ project, onClose }: Props) {
                               Led end-to-end delivery of vertical video, ads, and AI-powered personalization features for multiple sports clients, translating client goals and requirements into launch roadmaps and feature launch plans.
                             </li>
                             <li>
-                              Launched new AI-powered translation features for better content discovery and improved content accessibility.
+                              Launched new AI-powered translation features for better fan content discovery and improved content accessibility.
                             </li>
                             <li>
                               Collaborated with design and engineering to build evergreen and customized UI kits and content strategies tailored to each client&apos;s brand and fan experience.
