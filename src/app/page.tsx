@@ -20,7 +20,7 @@ export default function Home() {
 
   const syncViewToHash = () => {
     const hash = window.location.hash;
-    const aboutHashes = ["#about", "#experiences", "#all-about-me", "#proud", "#contact"];
+    const aboutHashes = ["#about", "#all-about-me", "#proud", "#contact"];
     if (hash === "#work") {
       setView("work");
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -101,6 +101,7 @@ export default function Home() {
             window.history.replaceState(null, "", `${window.location.pathname}#${view}`);
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
+          onOpenProject={setActiveProjectId}
         />
     </div>
   );
