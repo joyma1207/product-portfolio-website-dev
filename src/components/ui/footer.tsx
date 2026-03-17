@@ -3,6 +3,7 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 import { LucideIcon } from "lucide-react";
+import { SocialIcons } from "@/components/ui/social-icons";
 
 interface SocialLink {
   name: string;
@@ -28,7 +29,12 @@ interface FooterProps extends React.HTMLAttributes<HTMLDivElement> {
     name: string;
     description: string;
   };
+  /** Text links (e.g. "Email • LinkedIn"); ignored when socialEmail/socialLinkedIn are provided. */
   socialLinks: SocialLink[];
+  /** When provided with socialLinkedIn, the SocialIcons pill is shown instead of socialLinks. */
+  socialEmail?: string;
+  socialLinkedIn?: string;
+  socialGithub?: string;
   columns: FooterColumn[];
   copyright?: string;
   onBrandClick?: () => void;
@@ -36,7 +42,8 @@ interface FooterProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export const Footer = React.forwardRef<HTMLDivElement, FooterProps>(
-  ({ className, brand, socialLinks, columns, copyright, onBrandClick, onColumnTitleClick, ...props }, ref) => {
+  ({ className, brand, socialLinks, socialEmail, socialLinkedIn, socialGithub, columns, copyright, onBrandClick, onColumnTitleClick, ...props }, ref) => {
+    const useSocialIcons = socialEmail != null && socialLinkedIn != null;
     return (
       <div
         ref={ref}
@@ -65,21 +72,31 @@ export const Footer = React.forwardRef<HTMLDivElement, FooterProps>(
                 {brand.description}
               </p>
 
-              <p className="text-base font-light text-foreground/55 mt-3.5">
-                {socialLinks.map((link, index) => (
-                  <React.Fragment key={link.name}>
-                    <a
-                      className="hover:text-foreground/90"
-                      target="_blank"
-                      href={link.href}
-                      rel="noopener noreferrer"
-                    >
-                      {link.name}
-                    </a>
-                    {index < socialLinks.length - 1 && " • "}
-                  </React.Fragment>
-                ))}
-              </p>
+              <div className="mt-3.5">
+                {useSocialIcons ? (
+                  <SocialIcons
+                    email={socialEmail}
+                    linkedIn={socialLinkedIn}
+                    github={socialGithub}
+                  />
+                ) : (
+                  <p className="text-base font-light text-foreground/55">
+                    {socialLinks.map((link, index) => (
+                      <React.Fragment key={link.name}>
+                        <a
+                          className="hover:text-foreground/90"
+                          target="_blank"
+                          href={link.href}
+                          rel="noopener noreferrer"
+                        >
+                          {link.name}
+                        </a>
+                        {index < socialLinks.length - 1 && " • "}
+                      </React.Fragment>
+                    ))}
+                  </p>
+                )}
+              </div>
             </div>
 
             <div className="mt-16 flex flex-wrap justify-start gap-x-12 gap-y-8 lg:col-span-8 lg:mt-0 lg:justify-end">

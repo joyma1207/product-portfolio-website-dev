@@ -48,6 +48,9 @@ export function Hero({ variant = "default" }: HeroProps) {
             cursorChar="|"
           />
         </p>
+        <p className="mt-2 text-gray-400 text-base md:text-lg w-full max-w-full">
+          With customer-first thinking, creative solutions, and a deep passion for making an impact.
+        </p>
       </div>
     </header>
   );

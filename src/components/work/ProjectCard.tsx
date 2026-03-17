@@ -21,6 +21,16 @@ const STORYTELLER_GRID_ID = "storyteller" as const;
 /** Project IDs that use the three-images layout on the grid card. */
 const THREE_IMAGES_LAYOUT_IDS = [] as const;
 
+/** Right-aligned card labels (project id → pipe-separated list). */
+const CARD_LABELS: Partial<Record<string, string>> = {
+  storyteller: "Product Launch | Technical Software Delivery | AI",
+  "united-way": "Personalizations | Platforms",
+  sickkids: "Growth | Strategy | Healthcare",
+  cibc: "AI | Banking | Governance",
+  "caisa-fashion": "Design | Fashion",
+  "adobe-ivey": "Banking",
+};
+
 export function ProjectCard({ project, onOpen }: Props) {
   const imageMedia =
     project.media?.filter((m) => m.type === "image") ?? [];
@@ -208,11 +218,18 @@ export function ProjectCard({ project, onOpen }: Props) {
 
         {/* Company + tagline: same px-6 so image and text align left/right; always at bottom */}
         <div
-          className={`min-w-0 flex-shrink-0 px-6 pb-6 ${isStorytellerGrid || showThreeImagesLayout || showCardImage ? "pt-1" : "pt-6"}`}
+          className={`mt-auto min-w-0 flex-shrink-0 px-6 pb-6 ${isStorytellerGrid || showThreeImagesLayout || showCardImage ? "pt-1" : "pt-6"}`}
         >
-          <h3 className="text-xl font-bold text-gray-900 tracking-brand">
-            {project.company}
-          </h3>
+          <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+            <h3 className="text-xl font-bold text-gray-900 tracking-brand">
+              {project.company}
+            </h3>
+            {CARD_LABELS[project.id] && (
+              <span className="text-xs font-medium uppercase tracking-wider text-gray-500 text-right">
+                {CARD_LABELS[project.id]}
+              </span>
+            )}
+          </div>
           <p className="mt-2 line-clamp-2 text-sm leading-snug text-gray-500">
             {project.tagline ?? project.role}
           </p>

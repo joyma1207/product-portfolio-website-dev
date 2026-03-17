@@ -163,7 +163,13 @@ export function ProjectModal({ project, onClose }: Props) {
                       <h3 className="text-base font-semibold text-gray-900 tracking-brand">
                         The Solution
                       </h3>
-                      <p className="mt-2 text-base text-gray-600 leading-relaxed">{project.solution}</p>
+                      <div className="mt-2 space-y-3">
+                        {project.solution.split(/\n\n+/).map((para, i) => (
+                          <p key={i} className="text-base text-gray-600 leading-relaxed">
+                            {para.trim()}
+                          </p>
+                        ))}
+                      </div>
                     </section>
                     <section className="min-w-0 text-left">
                       <h3 className="text-base font-semibold text-gray-900 tracking-brand">

@@ -20,6 +20,7 @@ export function Footer({
 }) {
   return (
     <UIFooter
+      id="footer"
       className="mt-auto border-t border-gray-200/60 bg-background/95 backdrop-blur-sm"
       brand={{
         name: site.name,
@@ -34,6 +35,9 @@ export function Footer({
         { name: "Email", href: `mailto:${site.email}` },
         { name: "LinkedIn", href: site.linkedIn },
       ]}
+      socialEmail={site.email}
+      socialLinkedIn={site.linkedIn}
+      socialGithub={site.github}
       columns={[
         {
           title: "Works",
