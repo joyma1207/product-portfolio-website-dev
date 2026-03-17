@@ -43,9 +43,9 @@ export function Hero({ variant = "default" }: HeroProps) {
         </h1>
         <p className="mt-[var(--hero-title-tagline-gap)] text-gray-600 text-lg md:text-xl w-full max-w-full">
           <span className="block md:inline">
-            Launching consumer products and features that grow engagement, loyalty, and love for
-          </span>{" "}
-          <span className="block md:inline md:ml-2 whitespace-nowrap text-[#2563EB] font-medium">
+            Launching consumer products and features that grow engagement, loyalty, and love for{" "}
+          </span>
+          <span className="block md:inline whitespace-nowrap text-[#2563EB] font-medium">
             <Typewriter
               text={HERO_TYPEWRITER_WORDS}
               speed={70}
