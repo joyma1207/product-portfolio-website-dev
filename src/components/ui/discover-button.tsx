@@ -44,7 +44,7 @@ export function DiscoverButton() {
   };
 
   return (
-    <div className="flex items-center gap-3 p-2 h-full">
+    <div className="flex items-center justify-center p-1 h-full">
       <motion.div
         layout
         transition={{
@@ -53,9 +53,9 @@ export function DiscoverButton() {
           stiffness: 230,
           mass: 1.2,
         }}
-        className="flex items-center bg-white rounded-[3rem] shadow-lg h-[60px] overflow-hidden relative"
+        className="flex items-stretch bg-white rounded-[1.75rem] shadow-lg overflow-hidden relative"
       >
-        <div className="overflow-hidden relative h-full flex items-center">
+        <div className="overflow-hidden relative h-full flex flex-col">
           <motion.div
             initial={false}
             animate={{
@@ -66,15 +66,15 @@ export function DiscoverButton() {
             transition={{
               duration: 0.2,
             }}
-            className="flex items-center whitespace-nowrap"
+            className="flex flex-col whitespace-nowrap"
           >
-            <div className="flex items-center gap-2 px-[6px]">
+            <div className="flex flex-col gap-0.5 py-1 px-1.5">
               {TABS.map((tab) => (
                 <button
                   key={tab.id}
                   type="button"
                   onClick={() => handleTabClick(tab.id)}
-                  className={`flex items-center gap-2 px-6 py-3 rounded-[3rem] transition-colors relative ${
+                  className={`flex items-center gap-2 px-4 py-2 rounded-[1.5rem] transition-colors relative ${
                     activeTab === tab.id ? tab.color : "text-gray-700"
                   }`}
                 >
