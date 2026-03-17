@@ -13,6 +13,8 @@ interface FooterLink {
   name: string;
   Icon?: LucideIcon | React.FC<React.SVGProps<SVGSVGElement>>;
   href?: string;
+  /** When set, link is rendered as a button and this is called instead of navigating. */
+  onClick?: () => void;
 }
 
 interface FooterColumn {
@@ -99,17 +101,30 @@ export const Footer = React.forwardRef<HTMLDivElement, FooterProps>(
                     <h3 className="text-base font-semibold">{title}</h3>
                   )}
                   <ul className="mt-4 space-y-2.5">
-                    {links.map(({ name, Icon, href }) => (
+                    {links.map(({ name, Icon, href, onClick }) => (
                       <li key={name}>
-                        <a
-                          href={href || "#"}
-                          className="text-base transition-all text-foreground/60 hover:text-foreground/90 group"
-                        >
-                          {Icon && (
-                            <Icon className="inline stroke-2 h-4 mr-1.5 transition-all stroke-foreground/60 group-hover:stroke-foreground/90" />
-                          )}
-                          {name}
-                        </a>
+                        {onClick ? (
+                          <button
+                            type="button"
+                            onClick={onClick}
+                            className="text-base transition-all text-foreground/60 hover:text-foreground/90 group text-left bg-transparent border-none cursor-pointer p-0"
+                          >
+                            {Icon && (
+                              <Icon className="inline stroke-2 h-4 mr-1.5 transition-all stroke-foreground/60 group-hover:stroke-foreground/90" />
+                            )}
+                            {name}
+                          </button>
+                        ) : (
+                          <a
+                            href={href || "#"}
+                            className="text-base transition-all text-foreground/60 hover:text-foreground/90 group"
+                          >
+                            {Icon && (
+                              <Icon className="inline stroke-2 h-4 mr-1.5 transition-all stroke-foreground/60 group-hover:stroke-foreground/90" />
+                            )}
+                            {name}
+                          </a>
+                        )}
                       </li>
                     ))}
                   </ul>

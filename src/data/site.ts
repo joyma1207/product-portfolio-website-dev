@@ -10,7 +10,7 @@ export const site = {
   resumeUrl: "/resume.pdf",
   linkedIn: "https://www.linkedin.com/in/joy-m-50136b133/",
   email: "joyma2000@hotmail.com",
-  aboutSections: ["contact", "resume", "experiences", "passions"] as const,
+  aboutSections: ["contact", "resume", "passions"] as const,
   location: "Toronto, Canada",
   education:
     "MSc Digital Management @ Ivey Business School · BA Kinesiology @ Western University",
@@ -25,11 +25,7 @@ Lately I've been exploring vibe coding and tinkering with AI-powered workflows -
 
 You can also find me writing Beli reviews for under-the-radar food spots, at the rock climbing gym, or painting at home to my newest Spotify playlist.`,
 
-  /** My experiences — you'll drop in components later; placeholder copy optional. */
-  experiencesIntro:
-    "A few roles and projects that shaped how I think about product and delivery. More details in the Work section above.",
-
-  /** Things I'm super proud about — CAISA, Chinese Student's association, pivot from healthcare. */
+  /** My Pride and Joy — CAISA, Chinese Student's association, pivot from healthcare. */
   proud: [
     {
       title: "Building this portfolio",

@@ -7,8 +7,7 @@ import { MenuVertical } from "@/components/ui/menu-vertical";
 const ABOUT_MENU_ITEMS = [
   { label: "All About Me", href: "#all-about-me" },
   { label: "Download My Resume", href: site.resumeUrl, external: true },
-  { label: "My experiences", href: "#experiences" },
-  { label: "Things I'm super proud about", href: "#proud" },
+  { label: "My Pride and Joy", href: "#proud" },
   { label: "Contact me", href: "#contact" },
 ];
 
@@ -52,7 +51,7 @@ export function AboutSection() {
                     href={`mailto:${site.email}`}
                     className="hover:text-gray-900 underline-offset-2 hover:underline"
                   >
-                    email
+                    Email
                   </Link>
                   <span className="text-gray-400" aria-hidden>|</span>
                   <Link
@@ -70,7 +69,7 @@ export function AboutSection() {
                     rel="noopener noreferrer"
                     className="hover:text-gray-900 underline-offset-2 hover:underline"
                   >
-                    Download my resume
+                    Download my Resume
                   </Link>
                 </p>
               </div>
@@ -89,21 +88,10 @@ export function AboutSection() {
             </div>
           </div>
 
-          {/* My experiences — placeholder for your components later */}
-          <div id="experiences" className="scroll-mt-24 pt-12">
-            <h3 className="text-xl font-semibold tracking-brand text-gray-900">
-              My experiences
-            </h3>
-            <p className="mt-3 text-base text-gray-700 leading-relaxed">
-              {site.experiencesIntro}
-            </p>
-            {/* Drop your experience components here later */}
-          </div>
-
-          {/* Things I'm super proud about */}
+          {/* My Pride and Joy */}
           <div id="proud" className="scroll-mt-24 pt-12">
             <h3 className="text-xl font-semibold tracking-brand text-gray-900">
-              Things I'm super proud about
+              My Pride and Joy
             </h3>
             <ul className="mt-4 space-y-6">
               {site.proud.map((item, i) => (

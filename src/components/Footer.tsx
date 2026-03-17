@@ -5,15 +5,18 @@ import { site } from "@/data/site";
 import { projects } from "@/data/projects";
 
 /**
- * PRD: Bottom footer — brand, contact (email, LinkedIn), Works (company names), About (resume, experiences).
+ * PRD: Bottom footer — brand, contact (email, LinkedIn), Works (company names), About (resume, etc.).
  * Name / Work / About clicks navigate to that page (view + scroll to top).
+ * Works company links switch to Work view and open that project's card overlay.
  */
 export function Footer({
   onGoToHome,
   onNavigateToView,
+  onOpenProject,
 }: {
   onGoToHome?: () => void;
   onNavigateToView?: (view: "work" | "about") => void;
+  onOpenProject?: (projectId: string) => void;
 }) {
   return (
     <UIFooter
@@ -38,6 +41,10 @@ export function Footer({
           links: projects.map((p) => ({
             name: p.company,
             href: "#work",
+            onClick: () => {
+              onNavigateToView?.("work");
+              onOpenProject?.(p.id);
+            },
           })),
         },
         {
@@ -45,7 +52,6 @@ export function Footer({
           titleHref: "#about",
           links: [
             { name: "Resume", href: site.resumeUrl },
-            { name: "Experiences", href: "#experiences" },
           ],
         },
       ]}
