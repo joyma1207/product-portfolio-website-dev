@@ -19,7 +19,7 @@ export default function Home() {
 
   const syncViewToHash = () => {
     const hash = window.location.hash;
-    const aboutHashes = ["#about", "#all-about-me", "#proud", "#contact"];
+    const aboutHashes = ["#about", "#all-about-me", "#skills-capabilities", "#process", "#tools", "#contact", "#footer"];
     if (hash === "#work") {
       setView("work");
       window.scrollTo({ top: 0, behavior: "smooth" });

@@ -1,14 +1,21 @@
 "use client";
 
 import Link from "next/link";
+import { BookOpen, MapPin, Rocket, Users, GitBranch, Search } from "lucide-react";
 import { site } from "@/data/site";
 import { MenuVertical } from "@/components/ui/menu-vertical";
+import { SocialIcons } from "@/components/ui/social-icons";
+import { SkillsCard } from "@/components/about/SkillsCard";
+import { ProcessDiagram } from "@/components/about/ProcessDiagram";
+import { ToolsTree } from "@/components/about/ToolsTree";
 
 const ABOUT_MENU_ITEMS = [
   { label: "All About Me", href: "#all-about-me" },
   { label: "Download My Resume", href: site.resumeUrl, external: true },
-  { label: "My Pride and Joy", href: "#proud" },
-  { label: "Contact me", href: "#contact" },
+  { label: "Skills & Capabilities", href: "#skills-capabilities" },
+  { label: "My Process", href: "#process" },
+  { label: "Tools I Use", href: "#tools" },
+  { label: "Contact me", href: "#footer" },
 ];
 
 /**
@@ -41,37 +48,28 @@ export function AboutSection() {
                 <h2 className="text-2xl font-semibold tracking-brand text-gray-900 sm:text-3xl">
                   Hi! My name is Joy :))
                 </h2>
-                <p className="text-gray-700 text-lg">{site.location}</p>
-                <p className="text-gray-700 text-base leading-relaxed">
+                <p className="flex items-center gap-2 text-gray-600 text-base">
+                  <MapPin className="h-5 w-5 flex-shrink-0 text-gray-600" aria-hidden />
+                  {site.location}
+                </p>
+                <p className="flex items-center gap-2 text-gray-600 text-sm leading-relaxed">
+                  <BookOpen className="h-5 w-5 flex-shrink-0 text-gray-600" aria-hidden />
                   {site.education}
                 </p>
-                <p className="text-gray-700 text-base">{site.certification}</p>
-                <p className="flex flex-wrap items-center gap-1 pt-1 text-base text-gray-700">
-                  <Link
-                    href={`mailto:${site.email}`}
-                    className="hover:text-gray-900 underline-offset-2 hover:underline"
-                  >
-                    Email
-                  </Link>
-                  <span className="text-gray-400" aria-hidden>|</span>
-                  <Link
-                    href={site.linkedIn}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-gray-900 underline-offset-2 hover:underline"
-                  >
-                    LinkedIn
-                  </Link>
-                  <span className="text-gray-400" aria-hidden>|</span>
-                  <Link
-                    href={site.resumeUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-gray-900 underline-offset-2 hover:underline"
-                  >
-                    Download my Resume
-                  </Link>
-                </p>
+                <p className="text-gray-600 text-sm">{site.certification}</p>
+                <Link
+                  href={site.resumeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-gray-600 hover:text-gray-900 underline-offset-2 hover:underline w-fit block"
+                >
+                  Download my Resume
+                </Link>
+                <SocialIcons
+                  email={site.email}
+                  linkedIn={site.linkedIn}
+                  github={site.github}
+                />
               </div>
             </div>
           </div>
@@ -88,50 +86,42 @@ export function AboutSection() {
             </div>
           </div>
 
-          {/* My Pride and Joy */}
-          <div id="proud" className="scroll-mt-24 pt-12">
+          {/* My Skills & Capabilities — work grid card style, 4 cards in one row on lg */}
+          <div id="skills-capabilities" className="scroll-mt-24 pt-12">
             <h3 className="text-xl font-semibold tracking-brand text-gray-900">
-              My Pride and Joy
+              My Skills & Capabilities
             </h3>
-            <ul className="mt-4 space-y-6">
-              {site.proud.map((item, i) => (
-                <li key={i}>
-                  <h4 className="text-lg font-medium text-gray-900">
-                    {item.title}
-                  </h4>
-                  <p className="mt-1 text-base text-gray-700 leading-relaxed">
-                    {item.body}
-                  </p>
-                </li>
+            <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
+              {site.skillsCapabilities.map((cap, i) => (
+                <SkillsCard
+                  key={i}
+                  icon={[Rocket, Users, Search, GitBranch][i] ?? Rocket}
+                  title={cap.title}
+                  description={cap.description}
+                  colorIndex={i}
+                />
               ))}
-            </ul>
+            </div>
           </div>
 
-          {/* Contact me */}
-          <div id="contact" className="scroll-mt-24 pt-12">
+          {/* My Process */}
+          <div id="process" className="scroll-mt-24 pt-12">
             <h3 className="text-xl font-semibold tracking-brand text-gray-900">
-              Contact me
+              My Process
             </h3>
-            <p className="mt-3 text-base text-gray-700 leading-relaxed">
-              Always down to chat about product, AI, or just life. Say hi over email or LinkedIn.
-            </p>
-            <p className="mt-3 flex flex-wrap items-center gap-1 text-base text-gray-700">
-              <Link
-                href={`mailto:${site.email}`}
-                className="hover:text-gray-900 underline-offset-2 hover:underline"
-              >
-                {site.email}
-              </Link>
-              <span className="text-gray-400" aria-hidden>|</span>
-              <Link
-                href={site.linkedIn}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-gray-900 underline-offset-2 hover:underline"
-              >
-                LinkedIn
-              </Link>
-            </p>
+            <div className="mt-6">
+              <ProcessDiagram steps={site.processSteps} />
+            </div>
+          </div>
+
+          {/* My Tools — tree format */}
+          <div id="tools" className="scroll-mt-24 pt-12">
+            <h3 className="text-xl font-semibold tracking-brand text-gray-900">
+              My Tools
+            </h3>
+            <div className="mt-6">
+              <ToolsTree nodes={site.toolsTree} />
+            </div>
           </div>
         </div>
       </div>
