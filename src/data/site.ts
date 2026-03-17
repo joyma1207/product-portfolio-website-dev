@@ -6,7 +6,7 @@
 export const site = {
   name: "Joy Ma",
   tagline:
-    "Launching digital products, app features, and bringing technology & AI solutions for you",
+    "Launching consumer products and features that grow engagement, loyalty, and love for you.",
   resumeUrl: "/resume.pdf",
   linkedIn: "https://www.linkedin.com/in/joy-m-50136b133/",
   email: "joyma2000@hotmail.com",
@@ -19,11 +19,11 @@ export const site = {
   certification: "PMP expected May 2026 · Google Project Management Certificate",
 
   /** All About Me — aligned with PM roles (customer-first, cross-functional, discovery→launch); keeps your voice. */
-  allAboutMe: `My passions lay in the intersection of product, design, technology and the evolution of AI - and how I can used my combined skills to help people, whether it's users, customers, coworkers, and beyond. This is why I love product: I get excited by new ideas and by making them real. There's nothing quite like launching apps and features that makes an impact, gets people excited, and makes their  better.
+  allAboutMe: `My passions sit at the intersection of product, design, technology, and the evolution of AI — especially where they show up in everyday consumer experiences. I love taking fuzzy ideas, turning them into clear roadmaps, and shipping features that people actually use. There's nothing quite like launching an experience that feels intuitive, drives real results, and makes someone's day a little better.
 
-I've had experiences launching AI solutions, apps, and AI-powered features across consulting, sports & entertainment tech, non-profit, healthcare, and I'm interested in exploring more industries. I love how my diverse background gives me a unique ability to bring ideas to the table that feel fresh and interesting. 
+I've had experiences delivering impactful strategies, launching products, apps, and AI-powered features informed by data and user research across consulting, sports & entertainment tech, non-profit, healthcare, and banking, and I'm interested in exploring more industries. I love how my diverse background lets me bring fresh ideas from one space into another, while still staying grounded in user needs and business goals.
 
-Lately I've been exploring vibe coding and tinkering with AI-powered workflows - building side projects like this portfolio. 
+Lately I've been exploring vibe coding and tinkering with AI-powered workflows — building side projects like this portfolio. 
 
 You can also find me writing Beli reviews for under-the-radar food spots, at the rock climbing gym, or painting at home to my newest Spotify playlist.`,
 
@@ -52,12 +52,17 @@ You can also find me writing Beli reviews for under-the-radar food spots, at the
       children: [
         { label: "AirTable" },
         { label: "Confluence" },
+        { label: "Microsoft 365" },
+        { label: "Slack" },
       ],
+    },
+    {
+      label: "Design",
+      children: [{ label: "Figma" }],
     },
     {
       label: "AI",
       children: [
-        { label: "Generative AI" },
         {
           label: "Agentic AI",
           children: [
@@ -65,6 +70,10 @@ You can also find me writing Beli reviews for under-the-radar food spots, at the
             { label: "n8n" },
             { label: "Claude Code" },
           ],
+        },
+        {
+          label: "Generative AI",
+          children: [{ label: "ChatGPT" }, { label: "Gemini" }],
         },
         { label: "Vercel" },
       ],
@@ -74,24 +83,34 @@ You can also find me writing Beli reviews for under-the-radar food spots, at the
   /** My Skills & Capabilities — grid cards with title + description. */
   skillsCapabilities: [
     {
-      title: "Product Thinking",
+      title: "Product Strategy & Discovery",
       description:
-        "Taking ideas from discovery through launch: from gathering requirements, to user research, to design and building, and all the way launch - I love to be in the middle of it. ",
+        "From fuzzy idea to launch: clarifying the problem, scoping MVPs, mapping user journeys, and making trade-offs that balance user value and business goals.",
     },
     {
-      title: "I love my team, I love my crew",
+      title: "Cross-functional Leadership",
       description:
-        "I have experience acting as the bridge between design, engineering, and different stakeholders to align on goals and ship together.",
+        "Acting as the bridge between design, engineering, and stakeholders — setting context, unblocking decisions, and making sure everyone ships in the same direction.",
     },
     {
       title: "Research & Analysis",
       description:
-        "I have experience conducting user and market research, understanding user needs and market trends to inform product decisions, solve user challenges and propel business/industry standings.",
+        "Running user interviews, surveys, and market/competitive analysis to understand what users actually need and how that maps to product opportunities.",
     },
     {
       title: "Workflow Improvements",
       description:
         "Improving how we work: streamlining processes, better documentation, and reducing manual burden and frictions so the team can focus on building outcomes.",
+    },
+    {
+      title: "MVP Design",
+      description:
+        "Designing MVPs that ship: translating user problems into crisp scopes, prioritizing what matters most, and partnering with design and engineering to deliver a first version that’s learnable, measurable, and ready to iterate.",
+    },
+    {
+      title: "SDLC: Testing & Readiness",
+      description:
+        "Driving releases with confidence: defining acceptance criteria, coordinating QA and UAT, running readiness assessments (analytics, edge cases, support, rollbacks), and making sure launches are stable, trackable, and aligned across teams.",
     },
   ],
 

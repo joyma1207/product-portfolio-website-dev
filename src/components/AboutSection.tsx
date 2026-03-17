@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { BookOpen, MapPin, Rocket, Users, GitBranch, Search } from "lucide-react";
+import { BookOpen, MapPin, Rocket, Users, GitBranch, Search, LayoutTemplate, ClipboardCheck } from "lucide-react";
 import { site } from "@/data/site";
 import { MenuVertical } from "@/components/ui/menu-vertical";
 import { SocialIcons } from "@/components/ui/social-icons";
@@ -91,11 +91,11 @@ export function AboutSection() {
             <h3 className="text-xl font-semibold tracking-brand text-gray-900">
               My Skills & Capabilities
             </h3>
-            <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
+            <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-2">
               {site.skillsCapabilities.map((cap, i) => (
                 <SkillsCard
                   key={i}
-                  icon={[Rocket, Users, Search, GitBranch][i] ?? Rocket}
+                  icon={[Rocket, Users, Search, GitBranch, LayoutTemplate, ClipboardCheck][i] ?? Rocket}
                   title={cap.title}
                   description={cap.description}
                   colorIndex={i}

@@ -151,38 +151,124 @@ export function ProjectModal({ project, onClose }: Props) {
                   </div>
                 </div>
 
-                {/* Problem, Solution, Impact — three columns aligned with Role/Timeline/Team */}
+                {/* Problem, What I Owned, Impact — three columns aligned with Role/Timeline/Team */}
                 <div className="px-6 py-4 sm:px-8 lg:py-5">
                   <div className="grid w-full grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-6">
                     <section className="min-w-0 text-left">
-                      <h3 className="text-base font-semibold text-gray-900 tracking-brand">
-                        The Problem
-                      </h3>
-                      <p className="mt-2 text-base text-gray-600 leading-relaxed">{project.problem}</p>
+                      {project.id !== "caisa-fashion" && (
+                        <h3 className="text-base font-semibold text-gray-900 tracking-brand">
+                          The Problem
+                        </h3>
+                      )}
+                      <p className={`text-base text-gray-600 leading-relaxed ${project.id !== "caisa-fashion" ? "mt-2" : ""}`}>
+                        {project.problem}
+                      </p>
                     </section>
                     <section className="min-w-0 text-left">
                       <h3 className="text-base font-semibold text-gray-900 tracking-brand">
-                        The Solution
+                        What I owned
                       </h3>
-                      <div className="mt-2 space-y-3">
-                        {project.solution.split(/\n\n+/).map((para, i) => (
-                          <p key={i} className="text-base text-gray-600 leading-relaxed">
-                            {para.trim()}
-                          </p>
-                        ))}
-                      </div>
+                      <ul className="mt-2 space-y-2 text-base text-gray-600 leading-relaxed list-disc list-inside">
+                        {project.id === "storyteller" && (
+                          <>
+                            <li>
+                              Led end-to-end delivery of vertical video, ads, and AI-powered personalization features for multiple sports clients, translating client goals and requirements into launch roadmaps and feature launch plans.
+                            </li>
+                            <li>
+                              Launched new AI-powered translation features for better content discovery and improved content accessibility.
+                            </li>
+                            <li>
+                              Collaborated with design and engineering to build evergreen and customized UI kits and content strategies tailored to each client&apos;s brand and fan experience.
+                            </li>
+                            <li>
+                              Directed user acceptance testing and launch readiness reviews to make sure new features felt reliable, on-brand, and ready for high-traffic moments.
+                            </li>
+                            <li>
+                              New and updated SOPs, streamlined project documentions with AI, redesigned QA workflows and checklists to increase team velocity and reduce launch risk.
+                            </li>
+                          </>
+                        )}
+                        {project.id === "united-way" && (
+                          <>
+                            <li>
+                              Defined the product vision and 3-phase roadmap for digital donations and donor personalization.
+                            </li>
+                            <li>
+                              I proposed a fundraiser discovery feature, based on intent from their search and donation history data analysis - so that users can discover fundraisers that align with their interests and values.
+                            </li>
+                            <li>
+                              Redesigned the business website for a mobile-first experience - with a personalized donor portal, a chatbot agent for a more strealined and intuitive digital experience. 
+                            </li>
+                            <li>
+                              Conducted user research, data analysis, and competitive review to shape the portal, chatbot, and data platform.
+                            </li>
+                          </>
+                        )}
+                        {project.id === "cibc" && (
+                          <>
+                            <li>
+                              Designed the CIBC AI Center MVP, connecting governance, use cases, and client-facing storytelling.
+                            </li>
+                            <li>
+                              Researched on business and client needs, industry best practices, to shape website requirements.
+                            </li>
+                            <li>
+                              I collaborated with my team to present the strategic report highlighting use cases, implementation roadmap and video product demo that secured leadership buy-in.
+                            </li>
+                          </>
+                        )}
+                        {project.id === "sickkids" && (
+                          <>
+                            <li>
+                              Researched 3D modelling and VR use cases in complex surgery and mapped them to SickKids&apos; Precision Health goals.
+                            </li>
+                            <li>
+                              Framed benefits and risks for clinicians and leadership, focusing on safety and efficiency.
+                            </li>
+                            <li>
+                              Defined a change-management approach for piloting and scaling the solution.
+                            </li>
+                          </>
+                        )}
+                        {project.id === "adobe-ivey" && (
+                          <>
+                            <li>
+                              Co-created a 6-month roadmap using Adobe Digital Experience products to drive card acquisitions.
+                            </li>
+                            <li>
+                              Connected proposed experiences to cardmember LTV and acquisition metrics.
+                            </li>
+                            <li>
+                              Co-led the pitch to industry judges, synthesizing complex ideas into a clear story.
+                            </li>
+                          </>
+                        )}
+                        {project.id === "caisa-fashion" && (
+                          <>
+                            <li>
+                              Directed the overall creative vision for Canada&apos;s largest student-run charity fashion show.
+                            </li>
+                            <li>
+                              Coordinated a 120-person team across production, marketing, and operations.
+                            </li>
+                            <li>
+                              Led the pivot to virtual shows during COVID, including producing a 50-minute documentary.
+                            </li>
+                          </>
+                        )}
+                      </ul>
                     </section>
                     <section className="min-w-0 text-left">
                       <h3 className="text-base font-semibold text-gray-900 tracking-brand">
                         The Impact
                       </h3>
-                      <div className="mt-2 space-y-2">
+                      <ul className="mt-2 space-y-2 text-base text-gray-600 leading-relaxed list-disc list-inside">
                         {project.impact.split(/\n/).map((line, i) => (
-                          <p key={i} className="text-base text-gray-600 leading-relaxed">
+                          <li key={i}>
                             {line.trim()}
-                          </p>
+                          </li>
                         ))}
-                      </div>
+                      </ul>
                     </section>
                   </div>
                 </div>

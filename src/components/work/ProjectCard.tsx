@@ -23,10 +23,10 @@ const THREE_IMAGES_LAYOUT_IDS = [] as const;
 
 /** Right-aligned card labels (project id → pipe-separated list). */
 const CARD_LABELS: Partial<Record<string, string>> = {
-  storyteller: "Product Launch | Technical Software Delivery | AI",
+  storyteller: "Product Delivery | Feature Launch | AI",
   "united-way": "Personalizations | Platforms",
-  sickkids: "Growth | Strategy | Healthcare",
-  cibc: "AI | Banking | Governance",
+  sickkids: "Consulting| Growth | Strategy | ",
+  cibc: "Consulting | Banking | Governance",
   "caisa-fashion": "Design | Fashion",
   "adobe-ivey": "Banking",
 };
@@ -61,6 +61,9 @@ export function ProjectCard({ project, onOpen }: Props) {
         onClick={onOpen}
         className="group relative z-10 flex h-full w-full flex-col text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900/20 rounded-[30px] min-h-0"
       >
+        <div className="pointer-events-none absolute right-4 top-4 z-20 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-gray-700 shadow-sm">
+          Case Study +
+        </div>
         {/* Storyteller: 5 phones side-by-side, up-down staggered, Figma shadow */}
         {isStorytellerGrid && (
           <div className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden px-6 pt-6 pb-7">
@@ -216,7 +219,7 @@ export function ProjectCard({ project, onOpen }: Props) {
           <div className="min-h-0 flex-1" aria-hidden />
         )}
 
-        {/* Company + tagline: same px-6 so image and text align left/right; always at bottom */}
+        {/* Company + tagline + impact teaser: same px-6 so image and text align left/right; always at bottom */}
         <div
           className={`mt-auto min-w-0 flex-shrink-0 px-6 pb-6 ${isStorytellerGrid || showThreeImagesLayout || showCardImage ? "pt-1" : "pt-6"}`}
         >
@@ -232,6 +235,20 @@ export function ProjectCard({ project, onOpen }: Props) {
           </div>
           <p className="mt-2 line-clamp-2 text-sm leading-snug text-gray-500">
             {project.tagline ?? project.role}
+          </p>
+          <p className="mt-1 text-xs text-gray-500">
+            {project.id === "storyteller" &&
+              "Impact: 700% lift in high-impact engagement · 50% faster launches"}
+            {project.id === "united-way" &&
+              "Impact: +20% projected donations · 91% projected retention"}
+            {project.id === "cibc" &&
+              "Impact: +7 places in AI maturity benchmark"}
+            {project.id === "sickkids" &&
+              "Impact: 54% fewer errors · 230% more efficiency (projected)"}
+            {project.id === "adobe-ivey" &&
+              "Impact: Strategy linking digital experience to cardmember LTV and acquisition"}
+            {project.id === "caisa-fashion" &&
+              "Impact: $60K raised for charity · 1000+ attendees / year"}
           </p>
         </div>
       </button>
