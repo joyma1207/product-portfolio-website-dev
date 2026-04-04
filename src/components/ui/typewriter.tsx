@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, Variants } from "framer-motion";
 
 import { cn } from "@/lib/utils";
 
@@ -16,10 +15,6 @@ interface TypewriterProps {
   showCursor?: boolean;
   hideCursorOnType?: boolean;
   cursorChar?: string | React.ReactNode;
-  cursorAnimationVariants?: {
-    initial: Variants["initial"];
-    animate: Variants["animate"];
-  };
   cursorClassName?: string;
 }
 
@@ -35,18 +30,6 @@ const Typewriter = ({
   hideCursorOnType = false,
   cursorChar = "|",
   cursorClassName = "ml-1",
-  cursorAnimationVariants = {
-    initial: { opacity: 0 },
-    animate: {
-      opacity: 1,
-      transition: {
-        duration: 0.01,
-        repeat: Infinity,
-        repeatDelay: 0.4,
-        repeatType: "reverse",
-      },
-    },
-  },
 }: TypewriterProps) => {
   const [displayText, setDisplayText] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -89,7 +72,6 @@ const Typewriter = ({
       }
     };
 
-    // Apply initial delay only at the start
     if (currentIndex === 0 && !isDeleting && displayText === "") {
       timeout = setTimeout(startTyping, initialDelay);
     } else {
@@ -107,28 +89,29 @@ const Typewriter = ({
     texts,
     currentTextIndex,
     loop,
+    initialDelay,
   ]);
 
+  const currentFullText = texts[currentTextIndex] ?? "";
+  const hideCursor =
+    hideCursorOnType && (currentIndex < currentFullText.length || isDeleting);
+
   return (
-    <div className={cn("inline whitespace-pre-wrap tracking-tight", className)}>
+    <span className={cn("inline whitespace-pre-wrap tracking-tight", className)}>
       <span>{displayText}</span>
       {showCursor && (
-        <motion.span
-          variants={cursorAnimationVariants}
+        <span
           className={cn(
+            "typewriter-cursor inline-block",
             cursorClassName,
-            hideCursorOnType &&
-              (currentIndex < texts[currentTextIndex].length || isDeleting)
-              ? "hidden"
-              : ""
+            hideCursor ? "hidden" : "",
           )}
-          initial="initial"
-          animate="animate"
+          aria-hidden
         >
           {cursorChar}
-        </motion.span>
+        </span>
       )}
-    </div>
+    </span>
   );
 };
 

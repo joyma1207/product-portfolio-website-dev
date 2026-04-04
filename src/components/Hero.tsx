@@ -41,7 +41,7 @@ export function Hero({ variant = "default" }: HeroProps) {
         <h1 className="text-4xl font-semibold tracking-brand text-gray-900 md:text-5xl lg:text-6xl">
           {site.name}
         </h1>
-        <p className="mt-[var(--hero-title-tagline-gap)] text-gray-600 text-lg md:text-xl w-full max-w-full">
+        <div className="mt-[var(--hero-title-tagline-gap)] text-gray-600 text-lg md:text-xl w-full max-w-full">
           <span className="block md:inline">
             Launching consumer products and features that grow engagement, loyalty, and love
           </span>
@@ -58,7 +58,7 @@ export function Hero({ variant = "default" }: HeroProps) {
             />
             .
           </span>
-        </p>
+        </div>
         <p className="mt-2 text-gray-500 text-base md:text-lg w-full max-w-full">
           With creative solutions and user-first thinking, I&apos;ve helped businesses lift content engagement by 700% and ship features 50% faster.
         </p>

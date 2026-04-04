@@ -30,10 +30,18 @@ Open [http://localhost:3000](http://localhost:3000).
 ## Your edits
 
 1. **Contact & meta:** `src/data/site.ts` — name, tagline, email, LinkedIn, resume URL.
-2. **Projects:** `src/data/projects.ts` — real case studies (problem → solution → impact), media URLs.
+2. **Projects:** `src/data/projects.ts` — case studies (`problem`, `whatOwned`, `impact`, optional `cardPill` / `cardImpactTeaser`), media URLs.
 3. **Resume PDF:** Put your file at `public/resume.pdf` (or change `resumeUrl` in `site.ts`).
 
 ## If things get inconsistent
 
 If the assistant starts contradicting the PRD or making things up, **start a new chat** and say: “Continue my Joy Ma portfolio from the PRD; current state: [paste this README or list what’s done].” That resets context and reduces hallucinations.
+
+## If the UI looks broken (Times New Roman, no grid, one giant image)
+
+That pattern is usually **invalid HTML** (e.g. a `<button>` wrapping `<div>` layouts). Browsers “fix” the DOM and Tailwind classes no longer hit the right elements.
+
+1. Run **`npm run check:markup`** (also runs automatically before **`npm run build`**).
+2. Read **`.cursor/rules/product-portfolio-markup.mdc`** for the full checklist.
+3. Clear cache: **`rm -rf .next && npm run dev`** and hard-refresh the browser.
 # product-portfolio-website-dev

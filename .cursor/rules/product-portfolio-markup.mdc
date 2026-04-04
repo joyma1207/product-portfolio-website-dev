@@ -1,0 +1,39 @@
+---
+description: Prevent layout-breaking HTML and grid/pill drift in the Joy Ma product portfolio (Next.js + Tailwind).
+globs: src/**/*.tsx,src/**/*.ts
+---
+
+# Product portfolio — do not break the layout
+
+## Why the site looked “unstyled” (Times New Roman, one giant image, no grid)
+
+Browsers **repair invalid HTML** (e.g. closing tags early). React’s DOM then **does not match** the intended tree, **Tailwind layout classes stop applying** to the right nodes, and the page collapses into default styles.
+
+## Hard rules
+
+1. **Never put block layout inside `<button>`**  
+   In HTML, `<button>` only allows **phrasing content**. Do **not** wrap `<div>`, `<section>`, `<img>` layouts, `<motion.div>` (Framer lamp/highlight), or card chrome in `<button>`.  
+   **Use instead:** a `relative` wrapper with the animated layer **sibling** to `<button>`, or outer `<div role="button" tabIndex={0} onClick onKeyDown>` (see `WorkGrid` + `ProjectCard`), or `<button>` whose **only** children are text / inline elements (see `tubelight-navbar.tsx`).
+
+2. **Do not wrap unknown components in `<p>`**  
+   If a child might render a `<div>` (e.g. Framer `motion.*`, rich widgets), use `<div>` for the block of copy, not `<p>`.
+
+3. **Hero typewriter**  
+   Keep the typewriter root as **inline** (`<span>`). Prefer **CSS** for cursor blink in this app (`typewriter-cursor` in `globals.css`), not Framer Motion inside the hero line, to reduce SSR/hydration quirks.
+
+4. **Work grid and “Worked with” pills must stay in sync**  
+   - Render the grid with **`projects.map`** — do **not** maintain a separate `GRID_SIZE` that can drift from `projects.length`.  
+   - Render “Worked with” chips with **`projects.map`** + `workedWithChipLabel()` from `@/lib/workedWithChip` — do **not** hand-copy six pills when there are seven projects.
+
+5. **After markup changes**  
+   Run `npm run build` (which runs **`npm run check:markup` first**) and smoke-test **Work** view: seven cards in a 2-column grid on large screens, chips count = project count.
+
+6. **Automated guard**  
+   `scripts/check-portfolio-markup.mjs` fails the build if any `<button>` wraps block tags (`div`, `section`, etc.) or if `<p>` wraps `<div>`. Do not remove `prebuild` from `package.json` without replacing this protection.
+
+## If the site suddenly looks “unstyled” again
+
+- **Not a Tailwind bug first** — check **invalid HTML** (button/block, p/div). Run `npm run check:markup`.
+- **Stale cache:** `rm -rf .next && npm run dev`
+- **Wrong URL:** use `npm run dev` at [http://localhost:3000](http://localhost:3000), not opening a raw HTML export without CSS.
+- **Deploy:** confirm `next build` succeeded and `_next/static` CSS chunks load (Network tab 200).

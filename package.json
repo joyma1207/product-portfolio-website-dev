@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "check:markup": "node scripts/check-portfolio-markup.mjs",
+    "prebuild": "npm run check:markup",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"

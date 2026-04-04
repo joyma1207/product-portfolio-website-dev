@@ -1,6 +1,7 @@
 "use client";
 
 import { projects } from "@/data/projects";
+import { workedWithChipLabel } from "@/lib/workedWithChip";
 import { WorkGrid } from "@/components/work/WorkGrid";
 
 type Props = {
@@ -22,41 +23,16 @@ export function WorkSection({ onOpenProject }: Props) {
             Worked with
           </span>
           <div className="flex flex-wrap items-center gap-3">
-            <button
-              type="button"
-              onClick={() => onOpenProject("storyteller")}
-              className="rounded-full bg-gray-100 px-3 py-1 hover:bg-gray-200 transition-colors"
-            >
-              Storyteller · 2025
-            </button>
-            <button
-              type="button"
-              onClick={() => onOpenProject("united-way")}
-              className="rounded-full bg-gray-100 px-3 py-1 hover:bg-gray-200 transition-colors"
-            >
-              United Way · 2024
-            </button>
-            <button
-              type="button"
-              onClick={() => onOpenProject("cibc")}
-              className="rounded-full bg-gray-100 px-3 py-1 hover:bg-gray-200 transition-colors"
-            >
-              CIBC · 2024
-            </button>
-            <button
-              type="button"
-              onClick={() => onOpenProject("sickkids")}
-              className="rounded-full bg-gray-100 px-3 py-1 hover:bg-gray-200 transition-colors"
-            >
-              SickKids · 2024
-            </button>
-            <button
-              type="button"
-              onClick={() => onOpenProject("adobe-ivey")}
-              className="rounded-full bg-gray-100 px-3 py-1 hover:bg-gray-200 transition-colors"
-            >
-              Adobe · 2023
-            </button>
+            {projects.map((p) => (
+              <button
+                key={p.id}
+                type="button"
+                onClick={() => onOpenProject(p.id)}
+                className="rounded-full bg-gray-100 px-3 py-1 hover:bg-gray-200 transition-colors"
+              >
+                {workedWithChipLabel(p)}
+              </button>
+            ))}
           </div>
         </div>
       </div>
