@@ -7,7 +7,6 @@ import { Footer } from "@/components/Footer";
 import { WorkSection } from "@/components/work/WorkSection";
 import { AboutSection } from "@/components/AboutSection";
 import { ProjectModal } from "@/components/work/ProjectModal";
-import DiscoverButton from "@/components/ui/discover-button";
 import { projects } from "@/data/projects";
 
 export default function Home() {
@@ -48,9 +47,6 @@ export default function Home() {
 
   return (
     <div className="flex min-h-screen flex-col">
-      <div className="fixed right-4 top-1/2 -translate-y-1/2 z-50">
-        <DiscoverButton />
-      </div>
       <header className="relative z-20 w-full">
         <div className="w-full bg-background">
           <Hero />

@@ -4,7 +4,6 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 import { LucideIcon } from "lucide-react";
 import { SocialIcons } from "@/components/ui/social-icons";
-import DiscoverButton from "@/components/ui/discover-button";
 
 interface SocialLink {
   name: string;
@@ -30,8 +29,6 @@ interface FooterProps extends React.HTMLAttributes<HTMLDivElement> {
     name: string;
     description: string;
   };
-  /** Show the vertical Hire Me / Connect button under the brand description. */
-  showHireMeButton?: boolean;
   /** Text links (e.g. "Email • LinkedIn"); ignored when socialEmail/socialLinkedIn are provided. */
   socialLinks: SocialLink[];
   /** When provided with socialLinkedIn, the SocialIcons pill is shown instead of socialLinks. */
@@ -45,7 +42,7 @@ interface FooterProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export const Footer = React.forwardRef<HTMLDivElement, FooterProps>(
-  ({ className, brand, socialLinks, socialEmail, socialLinkedIn, socialGithub, columns, copyright, onBrandClick, onColumnTitleClick, showHireMeButton, ...props }, ref) => {
+  ({ className, brand, socialLinks, socialEmail, socialLinkedIn, socialGithub, columns, copyright, onBrandClick, onColumnTitleClick, ...props }, ref) => {
     const useSocialIcons = socialEmail != null && socialLinkedIn != null;
     return (
       <div
@@ -74,12 +71,6 @@ export const Footer = React.forwardRef<HTMLDivElement, FooterProps>(
               <p className="text-base text-foreground/60">
                 {brand.description}
               </p>
-
-              {showHireMeButton && (
-                <div className="mt-3.5">
-                  <DiscoverButton />
-                </div>
-              )}
 
               <p className="mt-3 text-sm font-medium text-foreground/80">
                 Review my resume or email me to talk about a role.
