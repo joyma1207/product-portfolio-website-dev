@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { X, Building2, Maximize2 } from "lucide-react";
+import { X, Building2, Maximize2, ExternalLink } from "lucide-react";
 import type { Project } from "@/data/projects";
 import { bulletsFromLines, bulletsFromParagraphs } from "@/lib/projectCopy";
 import { ShineBorder } from "@/components/ui/shine-border";
@@ -58,7 +58,8 @@ export function ProjectModal({ project, onClose }: Props) {
             aria-label="Close project"
             className="absolute inset-0 h-full w-full cursor-default border-0 bg-black/10 p-0 backdrop-blur-sm"
             onClick={onClose}
-          />
+          >
+          </button>
 
           <div
             className="absolute inset-0 flex min-h-full items-center justify-center overflow-y-auto p-1 sm:p-2"
@@ -69,13 +70,14 @@ export function ProjectModal({ project, onClose }: Props) {
               role="dialog"
               aria-modal="true"
               aria-labelledby={titleId}
-              className="relative flex w-full max-w-[min(98vw,72rem)] max-h-[98vh] flex-col overflow-hidden rounded-[30px] min-h-0 cursor-pointer"
+              className="relative flex w-full max-w-[min(98vw,72rem)] max-h-[98vh] flex-col overflow-hidden rounded-[30px] min-h-0"
               initial={reduceMotion ? false : { y: 16, scale: 0.98, opacity: 0 }}
               animate={{ y: 0, scale: 1, opacity: 1 }}
               exit={reduceMotion ? { opacity: 0 } : { y: 12, scale: 0.99, opacity: 0 }}
               transition={
                 reduceMotion ? { duration: 0.12 } : { type: "spring", stiffness: 260, damping: 26 }
               }
+              onClick={(e) => e.stopPropagation()}
             >
               <ShineBorder
                 borderRadius={30}
@@ -104,6 +106,17 @@ export function ProjectModal({ project, onClose }: Props) {
                       >
                         {project.company}
                       </h2>
+                      {project.liveDemoUrl && (
+                        <a
+                          href={project.liveDemoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#2563EB] hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/30 rounded"
+                        >
+                          Try it out
+                          <ExternalLink className="h-4 w-4 shrink-0 opacity-80" aria-hidden />
+                        </a>
+                      )}
                     </div>
                     <div className="flex items-center gap-1">
                       <button

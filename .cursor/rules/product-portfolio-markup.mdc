@@ -13,7 +13,7 @@ Browsers **repair invalid HTML** (e.g. closing tags early). React’s DOM then *
 
 1. **Never put block layout inside `<button>`**  
    In HTML, `<button>` only allows **phrasing content**. Do **not** wrap `<div>`, `<section>`, `<img>` layouts, `<motion.div>` (Framer lamp/highlight), or card chrome in `<button>`.  
-   **Use instead:** a `relative` wrapper with the animated layer **sibling** to `<button>`, or outer `<div role="button" tabIndex={0} onClick onKeyDown>` (see `WorkGrid` + `ProjectCard`), or `<button>` whose **only** children are text / inline elements (see `tubelight-navbar.tsx`).
+   **Use instead:** a `relative` wrapper with the animated layer **sibling** to `<button>`, or outer `<div role="group" tabIndex={0} onClick onKeyDown>` for whole-card click targets that also contain links (see `WorkGrid` — **not** `role="button"` when a child `<a>` exists), or `<button>` whose **only** children are text / inline elements (see `tubelight-navbar.tsx`).
 
 2. **Do not wrap unknown components in `<p>`**  
    If a child might render a `<div>` (e.g. Framer `motion.*`, rich widgets), use `<div>` for the block of copy, not `<p>`.

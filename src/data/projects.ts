@@ -30,41 +30,41 @@ export type Project = {
   /** Impact lines — one bullet per line. */
   impact: string;
   media?: ProjectMedia[];
+  /** Live prototype / demo — shown on card and in modal ("Try it out"). */
+  liveDemoUrl?: string;
 };
 
 export const projects: Project[] = [
   {
     id: "aritzia",
-    company: "Aritzia Virtual Try On",
+    company: "Aritzia Virtual Try-On",
     logo: "/assets/aritzia-logo.png",
     role: "Builder",
-    tagline: "Virtual Try-on feature to increase conversions.",
-    cardPill: "Virtual try-on | E-commerce | Conversion",
-    cardImpactTeaser:
-      "North star: conversion · returns · session depth · app · brand perception",
+    tagline: "Virtual Try-on feature to increase e-commerce conversions.",
+    cardPill: "E-commerce | Digital Growth",
     timeline: "2025",
     teamSize: "Independent",
     problem:
       "Aritzia’s e-commerce revenue now accounts for over 50% of net revenue. Despite that scale, the brand has no virtual try-on capability on the product detail page, while competitors are actively closing the gap with AR and fit experiences—creating conversion, returns, and brand-perception risk on the channel that matters most.",
     whatOwned: [
-      "Built a working web prototype for an Aritzia Studio–style virtual try-on on the PDP using React, Three.js, MediaPipe pose tracking, and optional WebXR on Android—plus a documented path for native app parity.",
-      "Grounded the opportunity in independent e-commerce and AR try-on benchmarks (including studies citing up to ~64% higher conversion where comparable AR try-on was deployed). Framed success targets: ~30% CVR lift for PDP sessions with Studio activated vs. control, and ~20% lower return rate for orders where Studio was used.",
+      "Built a working web and native-appprototype for an Aritzia Studio–style virtual try-on on the PDP using React, Three.js, MediaPipe pose tracking, and optional WebXR on Android—plus a documented path for native app parity.",
       "Authored a 10-section PRD: three-phase roadmap, web and native user flows, UI specs, technical architecture, privacy and analytics hooks, and the cross-functional teams needed to deliver in a real roadmap.",
     ].join("\n\n"),
     impactHeading: "North Star",
     impact: [
-      "Increase e-commerce conversion",
-      "Reduce return rate",
+      "Increase e-commerce conversion by 30%",
+      "Reduce return rate by 20%",
       "Increase session depth",
-      "Drive app adoption",
+      "Drive app engagement",
       "Elevate brand perception",
       "Concept portfolio work; not affiliated with Aritzia.",
     ].join("\n"),
     media: [
       { type: "image", url: "/assets/aritzia-grid-1.png", title: "Catalog try-on overlay — light colourway" },
-      { type: "image", url: "/assets/aritzia-grid-2.png", title: "Catalog try-on overlay — taupe" },
-      { type: "image", url: "/assets/aritzia-grid-3.png", title: "Catalog try-on overlay — navy" },
+      { type: "image", url: "/assets/aritzia-grid-2.png", title: "Mobile PDP — Light Birch blazer, studio try-on" },
+      { type: "image", url: "/assets/aritzia-grid-3.png", title: "Mobile PDP — Heather Light Grey coat" },
     ],
+    liveDemoUrl: "https://aritziavirtualtryon.netlify.app/",
   },
   {
     id: "storyteller",
