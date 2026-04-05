@@ -93,7 +93,11 @@ export function ProjectModal({ project, onClose }: Props) {
                         <img
                           src={project.logo}
                           alt={`${project.company} logo`}
-                          className="h-20 w-20 shrink-0 rounded-lg object-contain object-center sm:h-24 sm:w-24"
+                          className={
+                            project.id === "aritzia"
+                              ? "h-40 w-40 shrink-0 rounded-lg object-contain object-center sm:h-48 sm:w-48"
+                              : "h-20 w-20 shrink-0 rounded-lg object-contain object-center sm:h-24 sm:w-24"
+                          }
                         />
                       ) : (
                         <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-lg bg-blue-100 text-blue-600 sm:h-24 sm:w-24">
