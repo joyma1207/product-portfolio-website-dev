@@ -60,9 +60,9 @@ export const projects: Project[] = [
       "Concept portfolio work; not affiliated with Aritzia.",
     ].join("\n"),
     media: [
-      { type: "image", url: "/assets/aritzia-grid-1.png", title: "Catalog try-on overlay — light colourway" },
+      { type: "image", url: "/assets/aritzia-grid-1.png", title: "Mobile PDP — Etiquette Blazer (Crepette™), white colourway" },
+      { type: "image", url: "/assets/aritzia-grid-3.png", title: "Studio Try-On modal — Start Try-On, on-device processing" },
       { type: "image", url: "/assets/aritzia-grid-2.png", title: "Mobile PDP — Light Birch blazer, studio try-on" },
-      { type: "image", url: "/assets/aritzia-grid-3.png", title: "Mobile PDP — Heather Light Grey coat" },
     ],
     liveDemoUrl: "https://aritziavirtualtryon.netlify.app/",
   },
