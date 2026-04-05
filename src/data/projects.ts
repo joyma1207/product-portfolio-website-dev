@@ -45,9 +45,9 @@ export const projects: Project[] = [
     timeline: "2025",
     teamSize: "Independent",
     problem:
-      "Aritzia’s e-commerce revenue now accounts for over 50% of net revenue. Despite that scale, the brand has no virtual try-on capability on the product detail page, while competitors are actively closing the gap with AR and fit experiences—creating conversion, returns, and brand-perception risk on the channel that matters most.",
+      "E-commerce 2.0 is one of Aritzia's key strategic digital growth strategies, connecting clients to a personalized online Everyday LuxuryTM experience aligned with its omnichannel strategy. The Virtual Try-On feature is a creative and innovative solution for this - increasing e-commerce conversions while providing clients with the intuitive and immersive experience they are looking for when shopping with Aritzia.",
     whatOwned: [
-      "Built a working web and native-appprototype for an Aritzia Studio–style virtual try-on on the PDP using React, Three.js, MediaPipe pose tracking, and optional WebXR on Android—plus a documented path for native app parity.",
+      "Built a working web and native-app prototype for an Aritzia virtual try-on feature on the PDP using React, Three.js, MediaPipe pose tracking, and optional WebXR on Android—plus a documented path for native app parity.",
       "Authored a 10-section PRD: three-phase roadmap, web and native user flows, UI specs, technical architecture, privacy and analytics hooks, and the cross-functional teams needed to deliver in a real roadmap.",
     ].join("\n\n"),
     impactHeading: "North Star",
