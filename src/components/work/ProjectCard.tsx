@@ -203,6 +203,18 @@ export function ProjectCard({ project }: Props) {
           {project.cardImpactTeaser && (
             <p className="mt-1 text-xs text-gray-500">{project.cardImpactTeaser}</p>
           )}
+          {project.liveDemoUrl && (
+            <a
+              href={project.liveDemoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2 inline-flex text-sm font-semibold text-[#2563EB] hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/30 rounded"
+              onClick={(e) => e.stopPropagation()}
+              onKeyDown={(e) => e.stopPropagation()}
+            >
+              Try it out
+            </a>
+          )}
         </div>
       </div>
     </ShineBorder>

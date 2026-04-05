@@ -19,9 +19,9 @@ export function WorkGrid({ projects, onOpenProject }: Props) {
       {projects.map((project) => (
         <div
           key={project.id}
-          role="button"
+          role="group"
           tabIndex={0}
-          aria-label={`Open ${project.company} case study`}
+          aria-label={`${project.company} case study — press Enter to open`}
           onClick={() => onOpenProject(project.id)}
           onKeyDown={(e) => {
             if (e.key === "Enter" || e.key === " ") {

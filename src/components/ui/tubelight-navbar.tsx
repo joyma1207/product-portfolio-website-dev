@@ -47,7 +47,7 @@ export function NavBar({
           const lamp = isActive ? (
             <motion.div
               layoutId="lamp"
-              className="pointer-events-none absolute inset-0 z-0 w-full rounded-full bg-gray-200"
+              className="pointer-events-none absolute inset-0 z-0 w-full rounded-full bg-gray-200 [&_*]:pointer-events-none"
               initial={false}
               transition={{
                 type: "spring",
